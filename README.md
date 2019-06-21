@@ -9,6 +9,7 @@ Los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún si
 
 ## ¿Como funciona?
 Mediante un lector OBD2 modificado para funcionar con WiFi como cliente, una placa de la familia ESP8266 se conecta al OBD2 y recoge los datos necesarios que envía a un servidor MQTT. Se ha probado mediante los servidores gratuitos de Adafruit y CloudMQTT, auunque puede utilizarse cualquier otro. Posteriormente desde nuestro smartphone vemos a tiempo real el estado de nuestro vehículo a través de una página web que está copiada en nuestro dispositivo, y que no es necesario instalar nnguna aplicación o contratar servicios externos de web o bases de datos. Además, si el usuario dispone de mínimos conocimientos de web y javascript puede crear la pantalla a su medida y gusto. Anímate!
+![esquema](https://user-images.githubusercontent.com/50306926/59946559-24200300-946b-11e9-8d00-6204caec7187.jpg)
 
 ## Funcionalidades
 La aplicación permite monitorizar los siguientes datos:
@@ -31,11 +32,13 @@ La aplicación permite monitorizar los siguientes datos:
 ## ¿Qué necesito?
 * Primero de todo paciencia y leer las instrucciones. Si te cansa leer, no sigas.
 
-* 2 placas de la familia ESP8266. Yo utilizo una Lolin NodeMCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio.
+* 2 placas de la familia ESP8266. Yo utilizo una Lolin NodeMCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio. Eso permite que cuando el coche está cargando, la placa dispone de batería para varios días. Puedes poner un power bank o cualquier otro sistema que se te ocurra.
 
 * 1 unidad de OBD2 que funcione con el Hyunda Ioniq PHEV y que sea Bluetooth o WiFi. 
 
-* EL software [ESP-LINK](https://github.com/jeelabs/esp-link) de [JeeLabs](https://github.com/jeelabs) que encontrarás en  https://github.com/jeelabs/esp-link
+* El software [ESP-LINK](https://github.com/jeelabs/esp-link) de [JeeLabs](https://github.com/jeelabs) que encontrarás en  https://github.com/jeelabs/esp-link . Este software permite realizar un gateway entre la UART del OBD y nuestra wifi. Ese software deberás instalarlo en la primera de las placas ESP, en mi caso la Lolin NodeMCU. JeeLabs tiene toda la documentación al respecto. Por favor, leela en detalle para poder instalarla.
+
+* Un router 2, 3 ó 4G en tu vehículo para poder enviar los datos al servidor de MQTT, o tu propio smartphone con la compartición de WiFi activada. Yo dispongo de un router D-Link DWR-730 comprado de segunda mano por poco mas de 20€
 
 **¿Como sé que el OBD va a funcionar?**  Lo siento, pero todavía no puedo darte un link correcto de compra o de un fabricante, ya que el mio hace muchos años que lo compré y funciona perfectamente, pero tras numerosas pruebas y compras de diferentes OBD's sabemos que los que tienen version 1.5 de firmware disponen de una mayor probabilidad de funcionar, aunque no todos. Suelen funcionar OBD's antiguos, de mas de 3 ó 4 años. Además necesitarás sacar la placa bluetooth o WiFi que lleva para realizar la modificación necesaria, por lo que no podrá ser un OBD monoplaca, o que no permita su manipulación. Si el OBD que tienes dispone de la placa bluetooth o WiFi separable, antes de manipularlo deberás probar con Torque Pro y los ficheros PID de [JejuSoul](https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs) que encontrarás en https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs. No te voy a engañar... es una loteria encontrar uno que funcione, pero los productos de China son así. Sobre todo no te fies del exterior con las imagenes que pondré. No es garantia de que funcione.
 
