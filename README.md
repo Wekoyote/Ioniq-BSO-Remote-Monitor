@@ -47,7 +47,22 @@ La aplicación permite monitorizar los siguientes datos:
 
 **¿Pero porqué no utilizar un OBD WiFi directamente?** Los OBD's WiFi que hay en el mercado funcionan como punto de acceso. La placa encargada de recoger los datos se conectaría sin problemas al OBD, pero no podría salir a Internet para enviar los datos. Por ese motivo modifico el OBD poniendo un ESP8266. Si alguien tiene alguna otra idea, será bienvenida.
 
-**¿Pero porqué no usar un OBD Bluetooth directamente?** Esa fue mi primera idea, mediante un ESP32 conectar al OBD y de ahí enviar los datos al broker MQTT. Lo siento, no fuí capaz de utilizar el Bluetooth clasico con éxito mediante el IDE de Arduino. Mediante el ESP-IDF de Espressif parece que sería posible, pero mis conocimeintos en el ESP32 no son suficientes por el momento.
+**¿Pero porqué no usar un OBD Bluetooth directamente?** Esa fue mi primera idea, mediante un ESP32 conectar al OBD y de ahí enviar los datos al broker MQTT. Lo siento, no fuí capaz de utilizar el Bluetooth clasico con éxito mediante el IDE de Arduino. Mediante el ESP-IDF de Espressif parece que sería posible, pero mis conocimientos en el ESP32 no son suficientes por el momento.
+
+## Modificación del OBD
+Antes de nada, gracias a Ángel por su idea. El fué el primero en modificar su OBD y en explicame lo que hbái hecho :-)
+En principio las modificaciones son sencillas, pero requieren habilidad en soldauras de pequeño tamaño. Mi OBD originalente esra así:
+
+![IMG_20190126_114531](https://user-images.githubusercontent.com/50306926/59947687-33548000-946e-11e9-9c94-68ce4eea7137.jpg)
+
+Se tiene que desoldar la placa Bluetooth para poder conectar los pines del ESP8266. En mi modelo el conexionado es el siguiente, pero dependiendo de como sea tu OBD, deberás investigar que pines utilizar.
+
+![pineout](https://user-images.githubusercontent.com/50306926/59948808-9562b480-9471-11e9-9c43-87f5a65831d0.jpg)
+
+Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona perfectamente, o la ESP-01 que cabía perfectamente dentro del OBD. Para no sobrecargar el regulador de tensión de 3.3v que lleva el propio OBD, le instalé un regulador que se alimentaba desde los 5 voltios, tal como hago con la Lolin Nodemmcu, pero no acabó de convencerme la temperatura del regulador de tensión. En la siguiente imagen veréis como quedaba el montaje:
+
+![ESP01](https://user-images.githubusercontent.com/50306926/59949205-b4ae1180-9472-11e9-8be2-156f9dbae6aa.jpg)
+
 
 
 ## Screenshots
