@@ -1,6 +1,8 @@
 # Ioniq-BSO-Remote-Monitor
 Monitor the charge of your Ioniq PHEV remotely from your smartphone
 
+![Screenshot_IONIQ_BSO](https://user-images.githubusercontent.com/50306926/59940566-5cb7e080-945b-11e9-9088-f2885e057302.png)
+
 # VERSIÓN EN ESPAÑOL
 ## ¿Para que sirve?
 Los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún sistema de monitorización de la batería o del proceso de carga, por lo que decidí hacerme un sistema que me permitiera dejar mi Ioniq cargando y que mediante mi smartphone pudiera ver el proceso y me avise al finalizar con el resumen de dicha carga. Además quería que el sistema fuera lo mas sencillo posible, aunque haya que tener conocimientos de programación y algo de electrónica básica. No es equiparable al sistema BlueLink que se suministra en USA o Corea, pero realiza las funciones básicas para las que se ha programado.
