@@ -60,7 +60,26 @@ La aplicación permite monitorizar los siguientes datos:
 **¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?** Muy simple, es la que tenía a mano. Una muy buena opción es Wemos D1 Mini ya que es pequeña, igual de barata y funciona perfectamente. Posiblemente sustituya Lolin por esta placa. Agadeceré que me digáis cual usáis vosotros. 
 
 ## Instalación del software ESP-LINK
-Después de hacer diferentes pruebas con software propio, la mejor opción es utilizar [ESP-LINK](https://github.com/jeelabs/esp-link). Es un software fluido, facil de gestionar y que nos permite multitud de opciones. Tal como ya he dicho anteriormente, seguid las instrucciones de instalación y comprobad que funciona
+Después de hacer diferentes pruebas con software propio, la mejor opción es utilizar [ESP-LINK](https://github.com/jeelabs/esp-link). Es un software fluido, facil de gestionar y que nos permite multitud de opciones. Tal como ya he dicho anteriormente, seguid las instrucciones de instalación y comprobad que funciona aunque os adjunto la configuración utilizada por mi compañero Ángel desde el programador de firmware del NodeMCU: 
+
+![firmwareESPLINK](https://user-images.githubusercontent.com/50306926/59951787-40776c00-947a-11e9-9f69-225841a29907.jpg)
+
+
+Una vez instalado el ESP-LINK, conectaros a la Wifi que la placa levantará, y que veréis que está sin seguridad. Deberéis cambiar la velocidad de conexión de la UART desde la opción de menú *"μC CONSOLE"*, dejándolo a 38400 bauds:
+
+![photo5793915804792762996](https://user-images.githubusercontent.com/50306926/59952544-e2985380-947c-11e9-9bc5-ad3b606f6fc7.jpg)
+
+
+Os recomiendo desactivar el log desde *"Debug log"* dejándolo en OFF:
+
+![photo5793915804792762994](https://user-images.githubusercontent.com/50306926/59952545-e2985380-947c-11e9-86ba-340452ddb4fa.jpg)
+
+
+
+Por último podéis poner una IP fija para que la placa encargada de recoger los datos del OBD pueda encontrar al ESP-LINK:
+
+![photo5793915804792762995](https://user-images.githubusercontent.com/50306926/59952543-e2985380-947c-11e9-91af-2c1fb08e84d6.jpg)
+
 
 ## Modificación del OBD
 Antes de nada, gracias a Ángel por su idea. El fué el primero en modificar su OBD y en explicame lo que había hecho :-)
