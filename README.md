@@ -41,16 +41,29 @@ La aplicación permite monitorizar los siguientes datos:
 * Un router 2, 3 ó 4G en tu vehículo para poder enviar los datos al servidor de MQTT, o tu propio smartphone con la compartición de WiFi activada. Yo dispongo de un router D-Link DWR-730 comprado de segunda mano por poco mas de 20€
 
 
-## Preguntas varias del proyecto
+## Preguntas previas sobre el proyecto
 
 **¿Como sé que el OBD va a funcionar?**  Lo siento, pero todavía no puedo darte un link correcto de compra o de un fabricante, ya que el mio hace muchos años que lo compré y funciona perfectamente, pero tras numerosas pruebas y compras de diferentes OBD's sabemos que los que tienen version 1.5 de firmware disponen de una mayor probabilidad de funcionar, aunque no todos. Suelen funcionar OBD's antiguos, de mas de 3 ó 4 años. Además necesitarás sacar la placa bluetooth o WiFi que lleva para realizar la modificación necesaria, por lo que no podrá ser un OBD monoplaca, o que no permita su manipulación. Si el OBD que tienes dispone de la placa bluetooth o WiFi separable, antes de manipularlo deberás probar con Torque Pro y los ficheros PID de [JejuSoul](https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs) que encontrarás en https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs. No te voy a engañar... es una loteria encontrar uno que funcione, pero los productos de China son así. Sobre todo no te fies del exterior con las imagenes que pondré. No es garantia de que funcione.
+
+**¿Pero voy a poder usar el OBD en otros programas?** Si, yo continuo utilizándolo con Torque o Hybrid Assistant desde mi smartphone o, mejor todavía, desde el multimedia de mi Ioniq. Eso si, no puedo utilizar APP's y mi aplicación simultáneamente. Adjunto captura de Torque pro en mi multimedia del Ioniq:
+
+![IMG_20190322_233611_294](https://user-images.githubusercontent.com/50306926/59950477-57b45a80-9476-11e9-8835-0e7f98892dc2.jpg)
+
+**¿Pero como...puedo montar Torque Pro o Hybrid Assiatnt en mi multimedia?** Si, pero no es aquí donde te explicaré como. Si vas a [Ioniq Spain](https://ioniqspain.wordpress.com/2019/02/20/acceso-completo-a-la-capa-android/), el blog de nuestro compañero Smoje79, podrás ver como se hace.
+
+
 
 **¿Pero porqué no utilizar un OBD WiFi directamente?** Los OBD's WiFi que hay en el mercado funcionan como punto de acceso. La placa encargada de recoger los datos se conectaría sin problemas al OBD, pero no podría salir a Internet para enviar los datos. Por ese motivo modifico el OBD poniendo un ESP8266. Si alguien tiene alguna otra idea, será bienvenida.
 
 **¿Pero porqué no usar un OBD Bluetooth directamente?** Esa fue mi primera idea, mediante un ESP32 conectar al OBD y de ahí enviar los datos al broker MQTT. Lo siento, no fuí capaz de utilizar el Bluetooth clasico con éxito mediante el IDE de Arduino. Mediante el ESP-IDF de Espressif parece que sería posible, pero mis conocimientos en el ESP32 no son suficientes por el momento.
 
+**¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?** Muy simple, es la que tenía a mano. Una muy buena opción es Wemos D1 Mini ya que es pequeña, igual de barata y funciona perfectamente. Posiblemente sustituya Lolin por esta placa. Agadeceré que me digáis cual usáis vosotros. 
+
+## Instalación del software ESP-LINK
+Después de hacer diferentes pruebas con software propio, la mejor opción es utilizar [ESP-LINK](https://github.com/jeelabs/esp-link). Es un software fluido, facil de gestionar y que nos permite multitud de opciones. Tal como ya he dicho anteriormente, seguid las instrucciones de instalación y comprobad que funciona
+
 ## Modificación del OBD
-Antes de nada, gracias a Ángel por su idea. El fué el primero en modificar su OBD y en explicame lo que hbái hecho :-)
+Antes de nada, gracias a Ángel por su idea. El fué el primero en modificar su OBD y en explicame lo que había hecho :-)
 En principio las modificaciones son sencillas, pero requieren habilidad en soldauras de pequeño tamaño. Mi OBD originalente esra así:
 
 ![IMG_20190126_114531](https://user-images.githubusercontent.com/50306926/59947687-33548000-946e-11e9-9c94-68ce4eea7137.jpg)
