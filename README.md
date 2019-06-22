@@ -157,17 +157,22 @@ En principio las modificaciones son sencillas, pero requieren habilidad en solda
 
 ![IMG_20190126_114531](https://user-images.githubusercontent.com/50306926/59947687-33548000-946e-11e9-9c94-68ce4eea7137.jpg)
 
+<br/>
+<br/>
 
 Se tiene que desoldar la placa Bluetooth para poder conectar los pines del ESP8266. En mi modelo el conexionado es el siguiente, pero dependiendo de como sea tu OBD, deberás investigar que pines utilizar. Yo no puedo explicártelo si es diferente.
 
 ![pineout](https://user-images.githubusercontent.com/50306926/59955764-85a49980-948c-11e9-807d-163d0b577c75.jpg)
+<br/>
+<br/>
 
 
 Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona perfectamente, o la ESP-01 que cabía perfectamente dentro del OBD. Para no sobrecargar el regulador de tensión de 3.3v que lleva el propio OBD, le instalé un regulador que se alimentaba desde los 5 voltios, tal como hago con la Lolin NodeMCU, pero no acabó de convencerme la temperatura del regulador de tensión. En la siguiente imagen veréis como quedaba el montaje con ESP-01:
 
 ![ESP01](https://user-images.githubusercontent.com/50306926/59949205-b4ae1180-9472-11e9-8be2-156f9dbae6aa.jpg)
 
-
+<br/>
+<br/>
 
 **IMPORTANTE:** Antes de comprobar que funciona revisa el cabelado 2 veces por lo menos, especialmente la alimentación de 5 voltios a y GND para evitar cortocircuitos que puedan dañar a los circuitos del OBD, del ESP8266 o del propio coche. Mi recomendación es que hagas la prueba con una fuente de laboratorio y conectes 12 voltios al OBD mediante conectores. Los pines que tienes que conectar son el 16 con 12V+ y el 4 y 5 con el negativo (GND). Si todo funciona correctamente el OBD y el ESP8266 arrancará y podrás acceder a él:
 
@@ -224,7 +229,7 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 ¿No conoces MQTT? Pues de nuevo Google puede ayudarte, pero puedes visitar [¿Qué es MQTT? Su importancia como protocolo IOT](https://www.luisllamas.es/que-es-mqtt-su-importancia-como-protocolo-iot/) del incombustible [Lluis Llamas](https://www.luisllamas.es/) que tiene este y otros artículos muy interesantes. 
 
 Si mas o menos ya estás al dia de MQTT y si estás dado de alta en ningún servicio, puedes visitar [Cloudmqtt.com](https://cloudmqtt.com) y realizar el alta gratuita. Habilita un plan `Cute Cat` con el que tienes suficiente para este servicio. Cuando estes dado de alta, habilita un usuario desde *Users and ACL* y posteriormente un *nodo* o como ellos le llaman *ACL*. Puedes crear el usuario y nodo como tu quieras, pero si no quieres modificar la configuración que he puesto utiliza el usuario `ioniq` y el nodo `bso`, y habilita lectura y escritura. Debería quedar así:
-
+<br/>
 
 ![cloud](https://user-images.githubusercontent.com/50306926/59964449-3ea4bb80-9501-11e9-95bd-a284a6d38ed1.jpg)
 
@@ -255,8 +260,9 @@ const char* mqttUser = "UserCloudMQTT";          // Your user in CloudMQTT
 const char* mqttPassword = "PasswordCloudMQTT";  // Your password in CloudMQTT
 const char* nodemqtt= "ioniq/bso";               // Your topiq in CloudMQTT
 ```
-
 <br/>
+<br/>
+
 
 ### Configuración de Telegram
 El siguiente bloque es la configuración del bot de Télegram, el cual permite recibir los informes de carga cuando esta finaliza:
@@ -274,9 +280,8 @@ String BOTtoken = "botxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  //token format is bot
 String Chat_id = "123456789"; // Chat_id
 IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
 ```
-
 <br/>
-
+<br/>
 
 ### Configuración de DDNS
 Si lo deseas, puedes configurar el servicio de DDNS. ¿Qué para que lo necesitas? Pues por ejemplo por si quieres acceder desde el exterior a tu OBD o necesitas saber la IP de tu vehículo. Yo lo he dejado preparado ya que me interesa en un futuro próximo para modificaciones que tengo pensadas. Yo utilizo el servicio de [NOIP.com](https://www.noip.com/), pero verás que puedes usar otros.
@@ -335,6 +340,8 @@ Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo qu
 
 ![console](https://user-images.githubusercontent.com/50306926/59964207-02bc2700-94fe-11e9-987e-66417af0bc00.jpg)
 
+<br/>
+<br/>
 
 # Visualización de datos en tu smartphone o navegador
 Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero `index.html` con un editor de texto y localizar las siguientes líneas, donde debes colocar los datos de conexión a servidor del broker MQTT:
