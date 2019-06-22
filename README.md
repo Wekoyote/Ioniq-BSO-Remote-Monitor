@@ -54,8 +54,8 @@ Si, yo continuo utilizándolo con Torque o Hybrid Assistant desde mi smartphone 
 ![IMG_20190322_233611_294](https://user-images.githubusercontent.com/50306926/59950477-57b45a80-9476-11e9-8835-0e7f98892dc2.jpg)
 
 
-### ¿Pero como...puedo montar Torque Pro o Hybrid Assiatnt en mi multimedia?
-Si, pero no es aquí donde te explicaré como. Si vas a [Ioniq Spain](https://ioniqspain.wordpress.com/2019/02/20/acceso-completo-a-la-capa-android/), el blog de nuestro compañero Smoje79, podrás ver como se hace.
+### WTF!!! ¿Puedo montar Torque Pro o Hybrid Assiatnt en mi multimedia?
+Si, pero no es aquí donde te explicaré eso. Visita [Ioniq Spain](https://ioniqspain.wordpress.com/2019/02/20/acceso-completo-a-la-capa-android/), el blog de nuestro compañero Smoje79, y podrás ver como hacerlo.
 
 
 
