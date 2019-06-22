@@ -348,23 +348,30 @@ Estamos acabando.... Comenta la linea correspondiente en `Config.h` para desacti
 ## **SIN CARGAR**
 
 ![Screenshot_IONIQ_BSO_not_charge](https://user-images.githubusercontent.com/50306926/59957781-2d759380-949c-11e9-91c6-4f71c3bdcddf.jpg)
-
+<br/>
+<br/>
+<br/>
 
 ## **DURANTE LA CARGA**
 
 ![Screenshot_IONIQ_BSO_charging](https://user-images.githubusercontent.com/50306926/59957752-c9eb6600-949b-11e9-9f2a-82c575926ec2.jpg)
-
+<br/>
+<br/>
+<br/>
 
 ## **EJEMPLO DE PERSONALIZACIÓN**
 
 ![Screenshot_IONIQ_BSO_example](https://user-images.githubusercontent.com/50306926/59941543-b91bff80-945d-11e9-8704-061b4d2b4040.png)
-
+<br/>
+<br/>
+<br/>
 
 ## **OTRA PERSONALIZACIÓN**
 
 ![Screenshot_IONIQ_BSO_example1](https://user-images.githubusercontent.com/50306926/59941542-b91bff80-945d-11e9-92df-750d3fc649ae.png)
-
-
+<br/>
+<br/>
+<br/>
 
 ## Descarga de responsabilidad
 *Ioniq BSO Remote Monitor  ("El Software") se proporciona como está. Utilice el software bajo su propio riesgo. Los autores no garantizan el rendimiento o la adecuación para un propósito particular, o ninguna otra garantía expresa o implícita. Ninguna comunicación oral o escrita de o autorización de los autores creará una garantía. Bajo ninguna circunstancia, los autores serán responsables por daños directos, indirectos, especiales, incidentales o consecuentes resultantes del uso, mal uso o incapacidad de usar el software, incluso si el autor ha sido avisado de la posibilidad de tal daño. Estas exclusiones y limitaciones pueden no aplicarse en todas las jurisdicciones. Puede tener derechos adicionales y algunas de estas limitaciones pueden no aplicarse a usted. Este software solo está diseñado para uso científico.*
