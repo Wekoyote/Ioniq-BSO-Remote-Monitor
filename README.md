@@ -32,7 +32,7 @@ La aplicación permite monitorizar los siguientes datos:
 ## ¿Qué necesito?
 * Primero de todo paciencia y leer las instrucciones. Si te cansa leer, no sigas.
 
-* 2 placas de la familia ESP8266. Yo utilizo una Lolin NodeMCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. Realmente puedes utilizar las placas que te vengan en gana, ya que el softeare debería funcionar. Para pruebas también he utilizado Wemos D1 mini. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio. Eso permite que cuando el coche está cargando, la placa dispone de batería para varios días. Puedes poner un power bank o cualquier otro sistema que se te ocurra.
+* 2 placas de la familia ESP8266. Yo utilizo una Lolin MCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. Realmente puedes utilizar las placas que te vengan en gana, ya que el softeare debería funcionar. Para pruebas también he utilizado Wemos D1 mini. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio. Eso permite que cuando el coche está cargando, la placa dispone de batería para varios días. Puedes poner un power bank o cualquier otro sistema que se te ocurra.
 
 * 1 unidad de OBD2 que funcione con el Hyunda Ioniq PHEV y que sea Bluetooth o WiFi. 
 
@@ -102,9 +102,20 @@ Se tiene que desoldar la placa Bluetooth para poder conectar los pines del ESP82
 
 ![pineout](https://user-images.githubusercontent.com/50306926/59955764-85a49980-948c-11e9-807d-163d0b577c75.jpg)
 
-Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona perfectamente, o la ESP-01 que cabía perfectamente dentro del OBD. Para no sobrecargar el regulador de tensión de 3.3v que lleva el propio OBD, le instalé un regulador que se alimentaba desde los 5 voltios, tal como hago con la Lolin Nodemmcu, pero no acabó de convencerme la temperatura del regulador de tensión. En la siguiente imagen veréis como quedaba el montaje:
+Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona perfectamente, o la ESP-01 que cabía perfectamente dentro del OBD. Para no sobrecargar el regulador de tensión de 3.3v que lleva el propio OBD, le instalé un regulador que se alimentaba desde los 5 voltios, tal como hago con la Lolin NodeMCU, pero no acabó de convencerme la temperatura del regulador de tensión. En la siguiente imagen veréis como quedaba el montaje:
 
 ![ESP01](https://user-images.githubusercontent.com/50306926/59949205-b4ae1180-9472-11e9-8be2-156f9dbae6aa.jpg)
+
+
+
+**IMPORTANTE:** Antes de comprobar que funciona revisa el cabelado, especialmente la alimentación de 5 voltios a y GND para evitar cortocircuitos que puedan dañar a los circuitos del OBD, del ESP8266 o del propio coche. Mi recomendación es que hagas la prueba con una fuente de laboratorio y conectes 12 voltios al OBD mediante conectores. Los pines que tienes que conectar son el 16 con 12V+ y el 4 y 5 con el negativo. Si todo funciona correctamente el OBD y el ESP8266 arrancará y podrás acceder a él:
+
+![Pineout_OBD](https://user-images.githubusercontent.com/50306926/59956185-049ad180-948f-11e9-984f-49ede28667f0.jpg)
+
+
+Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acceder al menú *"μC CONSOLE"*. Desde ahí teclea el comando *ATZ* y deberás obtener la respuesta de la versión del firmware del OBD, en mi caso *ELM 327 v1.5*. Si es así, todo funciona correctamente y ya está realizado lo mas duro.
+
+![atz](https://user-images.githubusercontent.com/50306926/59956604-9f94ab00-9491-11e9-9586-a1854220b628.jpg)
 
 
 
