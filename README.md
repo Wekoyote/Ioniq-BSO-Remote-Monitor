@@ -6,7 +6,9 @@
 ---------------------------------------------------------------
 
 # VERSIÓN EN ESPAÑOL
+**As soon as I finish writing in Spanish, I will try to write it in English. Meanwhile, Google Translate will help you.**
 
+- [¿Para que sirve?](#para-que-sirve)
 - [¿Para que sirve?](#para-que-sirve)
 - [¿Como funciona?](#como-funciona)
 - [Funcionalidades](#funcionalidades)
@@ -22,6 +24,7 @@
 
 - [Instalación del software ESP-LINK](#Instalación-del-software-ESP-LINK)
 - [Modificación del OBD](#modificación-del-OBD)
+- [Configuración del servicio MQTT](#Configuración-del-servicio-MQTT)
 - [Instalación de Ioniq BSO Remote Monitor en ESP8266](#Instalación-de-Ioniq-BSO-Remote-Monitor-en-ESP8266)
   -[Configuración de `Config.h`](#Configuración-de-`Config.h`)
     - [Configuración de WiFi y OBD](#Configuración-de-WiFi-y-OBD) 
@@ -29,12 +32,15 @@
     - [Configuración de Telegram](#Configuración-de-Telegram])
     - [Configuración de DDNS](#Configuración-de-DDNS)
     - [Otras configuraciones](#Otras-configuraciones)
-
-
+    
+  - [Librerías](#librerías)  
+  - [Compilado e instalación](#Compilado-e-instalación)
 
 
 ## ¿Para que sirve?
-Los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún sistema de monitorización de la batería o del proceso de carga, por lo que decidí hacerme un sistema que me permitiera dejar mi Ioniq cargando y que mediante mi smartphone pudiera ver el proceso y me avise al finalizar con el resumen de dicha carga. Además quería que el sistema fuera lo mas sencillo posible, aunque haya que tener conocimientos de programación y algo de electrónica básica. No es equiparable al sistema BlueLink que se suministra en USA o Corea, pero realiza las funciones básicas para las que se ha programado.
+Antes de nada quiero decir que aunque profesionalmente me he dedicado a la programación y he estado relacionado con la electrónica, Arduino, ESP8266 y el lenguaje C++ no es mi mundo. Lo he realizado lo mejor que podía, pero seguro que encontrareis errores y que hay mejores maneras de hacer muchos de los pasos que he programado. Sed benébolos :pray:. Gracias.
+
+Bien, los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún sistema de monitorización de la batería o del proceso de carga, por lo que decidí hacerme un sistema que me permitiera dejar mi Ioniq cargando y que mediante mi smartphone pudiera ver el proceso y me avise al finalizar con el resumen de dicha carga. Además quería que el sistema fuera lo mas sencillo posible, aunque haya que tener conocimientos de programación y algo de electrónica básica. No es equiparable al sistema BlueLink que se suministra en USA o Corea, pero realiza las funciones básicas para las que se ha programado.
 
 ## ¿Como funciona?
 Mediante un lector OBD2 modificado para funcionar con WiFi como cliente, una placa de la familia ESP8266 se conecta al OBD2 y recoge los datos necesarios que envía a un servidor MQTT. Se ha probado mediante los servidores gratuitos de Adafruit y CloudMQTT, auunque puede utilizarse cualquier otro. Posteriormente desde nuestro smartphone vemos a tiempo real el estado de nuestro vehículo a través de una página web que está copiada en nuestro dispositivo, y que no es necesario instalar nnguna aplicación o contratar servicios externos de web o bases de datos. Además, si el usuario dispone de mínimos conocimientos de web y javascript puede crear la pantalla a su medida y gusto. Anímate!
@@ -56,6 +62,7 @@ La aplicación permite monitorizar los siguientes datos:
 * Tiempo estimado de carga para completar el 100%
 * Informe de carga vía Telegram bot
 * Cliente a servicios de DDNS
+* Posibilidad de enlazar con IFTTT para apagar cargadores u otras ideas. Tu imaginación manda...
 
 
 
@@ -195,7 +202,14 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 <br/>
 
 ### Configuración del broker MQTT
-La configuración en `Config.h` lleva dos ejemplos de servidores MQTT, estando el de la configuración de Adafruit comentado. Yo utilizo [CloudMQTT](https://www.cloudmqtt.com/) ya que permite altas gratuitas. Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que si la placa está apagada, visualizo los últimos datos enviados. Adafruit no permite esa característica. 
+¿No conoces MQTT? Pues de nuevo Google puede ayudarte, pero puedes visitar [¿Qué es MQTT? Su importancia como protocolo IOT](https://www.luisllamas.es/que-es-mqtt-su-importancia-como-protocolo-iot/) del incombustible [Lluis Llamas](https://www.luisllamas.es/) que tiene este y otros artículos muy interesantes. 
+
+Si mas o menos ya estás al dia de MQTT y si estás dado de alta en ningún servicio, puedes visitar [Cloudmqtt.com](https://cloudmqtt.com) y realizar el alta gratuita. Habilita un plan `Cute Cat`con el que tienes suficiente para este servicio. CUando estes dado de alta, habilita usuario desde *Users and ACL* y posteriormente un *nodo* o como ellos le llaman *ACL*. Puedes crear el usuario y nodo como tu quieras, pero si no quieres modificar la configuración, utiliza el usuario `ioniq` y el nodo `bso` y habilita lectura y escritura, por lo que debería quedar así:
+
+
+![cloud](https://user-images.githubusercontent.com/50306926/59964449-3ea4bb80-9501-11e9-95bd-a284a6d38ed1.jpg)
+
+La configuración en `Config.h` lleva dos ejemplos de servidores MQTT, estando el de la configuración de Adafruit comentado. Como ya he comentado, yo utilizo [CloudMQTT](https://www.cloudmqtt.com/) ya que permite altas gratuitas. Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que aunque la placa está apagada, visualizo los últimos datos enviados. Adafruit no permite esa característica, sin realizar acciones intermedias.
 
 Por supuesto que podeís utilizar el servidor MQTT que mas os guste. Espero vuestros comentarios al respecto.
 
@@ -225,7 +239,6 @@ const char* nodemqtt= "ioniq/bso";               // Your topiq in CloudMQTT
 <br/>
 <br/>
 <br/>
-
 ### Configuración de Telegram
 El siguiente bloque es la configuración del Bot de Télegram, el cual permite recibir los informes de carga cuando esta finaliza:
 
@@ -244,8 +257,6 @@ IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
 <br/>
 <br/>
 <br/>
-
-
 ### Configuración de DDNS
 Si lo deseas, puedes configurar el servicio de DDNS. ¿Qué para que lo necesitas? Pues por ejemplo por si quieres acceder desde el exterior a tu OBD o necesitas saber la IP de tu vehículo. Yo l ohe dejado preparado ya que a mi si me interesa en un futuro próximo para modificaciones que tengo pensadas. Yo utilizo el servisio de [NO-IP](https://www.noip.com/), pero verás que puedes usar otros.
 ```c#
@@ -261,7 +272,6 @@ int ddnsUpdate = 10000; // Check for New Ip Every 10 Seconds.
 <br/>
 <br/>
 <br/>
-
 ### Otras configuraciones
 En este apartado está el nombre del vehículo que se envía en la notificación vía Telegram, el tamaño de la batería del nuestro ioniq y las configuraciones horarias. tengo pendiente calcular automáticamente si es verano o invierno.
 ```c#
@@ -285,6 +295,14 @@ En las librerias `NTPClient.h` y `EasyDDNS.h` añado las URL's de descarga.
 ```
 <br/>
 <br/>
+
+# Compilado e instalación
+Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo que habilites el `TEST_MODE`para poder ver como funciona a través de la cónsola serie y directamente podrás ver los datos en tu broker de MQTT.
+
+![console](https://user-images.githubusercontent.com/50306926/59964207-02bc2700-94fe-11e9-987e-66417af0bc00.jpg)
+
+
+
 
 **IMPORTANTE:** 
 Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que es la encargada de enviar los paquetes MQTT al broker. Como se envía en un único *topic*, el tamaño supera los 127 bits máximos que permite, por lo que debe modicicarse el tamaño de `MQTT_MAX_PACKET_SIZE`a 256. Deberás buscar el fichero `PubSubClient.h`que debería estar en */Arduino/libraries/PubSubClient/src* y editarlo:
