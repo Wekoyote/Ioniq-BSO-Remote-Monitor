@@ -239,6 +239,7 @@ const char* nodemqtt= "ioniq/bso";               // Your topiq in CloudMQTT
 <br/>
 <br/>
 <br/>
+
 ### Configuración de Telegram
 El siguiente bloque es la configuración del Bot de Télegram, el cual permite recibir los informes de carga cuando esta finaliza:
 
@@ -257,8 +258,10 @@ IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
 <br/>
 <br/>
 <br/>
+
 ### Configuración de DDNS
 Si lo deseas, puedes configurar el servicio de DDNS. ¿Qué para que lo necesitas? Pues por ejemplo por si quieres acceder desde el exterior a tu OBD o necesitas saber la IP de tu vehículo. Yo l ohe dejado preparado ya que a mi si me interesa en un futuro próximo para modificaciones que tengo pensadas. Yo utilizo el servisio de [NO-IP](https://www.noip.com/), pero verás que puedes usar otros.
+
 ```c#
 // ***************************************************************************
 // Config DDNS
@@ -272,6 +275,7 @@ int ddnsUpdate = 10000; // Check for New Ip Every 10 Seconds.
 <br/>
 <br/>
 <br/>
+
 ### Otras configuraciones
 En este apartado está el nombre del vehículo que se envía en la notificación vía Telegram, el tamaño de la batería del nuestro ioniq y las configuraciones horarias. tengo pendiente calcular automáticamente si es verano o invierno.
 ```c#
@@ -293,6 +297,15 @@ En las librerias `NTPClient.h` y `EasyDDNS.h` añado las URL's de descarga.
 #include <ESP8266WiFi.h>  
 #include <PubSubClient.h>      // IMPORTANT: Modify #define MQTT_MAX_PACKET_SIZE 256 in PubSubClient.h file from library directory
 ```
+
+**IMPORTANTE:** 
+Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que es la encargada de enviar los paquetes MQTT al broker. Como se envía en un único *topic*, el tamaño supera los 127 bits máximos que permite, por lo que debe modicicarse el tamaño de `MQTT_MAX_PACKET_SIZE`a 256. Deberás buscar el fichero `PubSubClient.h`que debería estar en */Arduino/libraries/PubSubClient/src* y editarlo:
+```c#
+// MQTT_MAX_PACKET_SIZE : Maximum packet size
+#ifndef MQTT_MAX_PACKET_SIZE
+#define MQTT_MAX_PACKET_SIZE 256 //<---- modificar aquí 
+#endif
+```
 <br/>
 <br/>
 
@@ -304,14 +317,6 @@ Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo qu
 
 
 
-**IMPORTANTE:** 
-Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que es la encargada de enviar los paquetes MQTT al broker. Como se envía en un único *topic*, el tamaño supera los 127 bits máximos que permite, por lo que debe modicicarse el tamaño de `MQTT_MAX_PACKET_SIZE`a 256. Deberás buscar el fichero `PubSubClient.h`que debería estar en */Arduino/libraries/PubSubClient/src* y editarlo:
-```c#
-// MQTT_MAX_PACKET_SIZE : Maximum packet size
-#ifndef MQTT_MAX_PACKET_SIZE
-#define MQTT_MAX_PACKET_SIZE 256 //<---- modificar aquí 
-#endif
-```
 
 
 
