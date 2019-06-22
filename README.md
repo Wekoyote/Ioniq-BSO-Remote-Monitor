@@ -236,8 +236,7 @@ const char* mqttUser = "UserCloudMQTT";          // Your user in CloudMQTT
 const char* mqttPassword = "PasswordCloudMQTT";  // Your password in CloudMQTT
 const char* nodemqtt= "ioniq/bso";               // Your topiq in CloudMQTT
 ```
-<br/>
-<br/>
+
 <br/>
 
 ### Configuración de Telegram
@@ -255,9 +254,9 @@ String BOTtoken = "botxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  //token format is bot
 String Chat_id = "123456789"; // Chat_id
 IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
 ```
+
 <br/>
-<br/>
-<br/>
+
 
 ### Configuración de DDNS
 Si lo deseas, puedes configurar el servicio de DDNS. ¿Qué para que lo necesitas? Pues por ejemplo por si quieres acceder desde el exterior a tu OBD o necesitas saber la IP de tu vehículo. Yo l ohe dejado preparado ya que a mi si me interesa en un futuro próximo para modificaciones que tengo pensadas. Yo utilizo el servisio de [NO-IP](https://www.noip.com/), pero verás que puedes usar otros.
@@ -272,8 +271,7 @@ String ddnsUsername ="UserDDNS";
 String ddnsPassword ="PasswordDDNS";
 int ddnsUpdate = 10000; // Check for New Ip Every 10 Seconds.
 ```
-<br/>
-<br/>
+
 <br/>
 
 ### Otras configuraciones
