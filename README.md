@@ -27,7 +27,7 @@
 - [Modificación del OBD](#modificación-del-OBD)
 - [Configuración del servicio MQTT](#Configuración-del-servicio-MQTT)
 - [Instalación de Ioniq BSO Remote Monitor en ESP8266](#Instalación-de-Ioniq-BSO-Remote-Monitor-en-ESP8266)
-  -[Configuración de `Config.h`](#Configuración-de-`Config.h`)
+    - [Configuración de `Config.h`](#Configuración-de-Config.h)
     - [Configuración de WiFi y OBD](#Configuración-de-WiFi-y-OBD) 
     - [Configuración del broker MQTT](#Configuración-del-broker-MQTT])
     - [Configuración de Telegram](#Configuración-de-Telegram])
