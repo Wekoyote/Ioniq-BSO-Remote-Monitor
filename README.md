@@ -126,16 +126,22 @@ Muy simple, es la que tenía a mano. Una muy buena opción es Wemos D1 Mini ya q
 Después de hacer diferentes pruebas con software propio, [ESP-LINK](https://github.com/jeelabs/esp-link) me ha parecido la mejor opción. Es un software fluido, facil de gestionar y que nos permite multitud de opciones. Tal como ya he dicho anteriormente, seguid las instrucciones de instalación y comprobad que funciona aunque os adjunto la configuración utilizada por mi compañero Ángel desde el programador de firmware del NodeMCU: 
 
 ![firmwareESPLINK](https://user-images.githubusercontent.com/50306926/59951787-40776c00-947a-11e9-9f69-225841a29907.jpg)
+<br/>
+<br/>
 
 
 Una vez instalado el ESP-LINK conectaros a la Wifi que la placa levantará y que veréis que está sin seguridad, para posteriormente vía web ir a la IP 192.168.4.1. Deberéis cambiar la velocidad de conexión de la UART desde la opción de menú *"μC CONSOLE"*, dejándolo a 38400 bauds:
 
 ![photo5793915804792762996](https://user-images.githubusercontent.com/50306926/59952544-e2985380-947c-11e9-9bc5-ad3b606f6fc7.jpg)
+<br/>
+<br/>
 
 
 Os recomiendo desactivar el log desde *"Debug log"* dejándolo en OFF:
 
 ![photo5793915804792762994](https://user-images.githubusercontent.com/50306926/59952545-e2985380-947c-11e9-86ba-340452ddb4fa.jpg)
+<br/>
+<br/>
 
   
 
@@ -309,6 +315,8 @@ En las librerias `NTPClient.h` y `EasyDDNS.h` añado las URL's de descarga para 
 #include <ESP8266WiFi.h>  
 #include <PubSubClient.h>      // IMPORTANT: Modify #define MQTT_MAX_PACKET_SIZE 256 in PubSubClient.h file from library directory
 ```
+<br/>
+<br/>
 
 **IMPORTANTE:** 
 Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que es la encargada de enviar los paquetes MQTT al broker. Como se envía en un único *topic* y el tamaño supera los 127 bits máximos que permite, debe modificarse el tamaño de `MQTT_MAX_PACKET_SIZE`a 256. Deberás buscar el fichero `PubSubClient.h`que debería estar en *Arduino/libraries/PubSubClient/src* y editarlo:
@@ -344,6 +352,10 @@ Ahora abre `index.html` con un navegador y si tienes la placa con el Ioniq BSO R
 Estamos acabando.... Comenta la linea correspondiente en `Config.h` para desactivar `TEST_MODE`, compila y envía el programa de nuevo a tu placa ESP. Recuerda poner los datos de la WiFi de tu vehículo para que funcione, ya sea compartiendo desde tu smartphone o mediante un router. Conecta el OBD modificado en el Ioniq, alimenta la placa ESP con el programa todo y deberías ver los datos de tu vehículo. 
 
 ¿Funciona? Espero que si.
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 # Screenshots
