@@ -14,13 +14,15 @@
 - [Preguntas previas sobre el proyecto](#preguntas-previas-sobre-el-proyecto)
   - [¿Como sé que el OBD va a funcionar?](#como-sé-que-el-obd-va-a-funcionar)
   - [¿Pero voy a poder usar el OBD en otros programas?](#Pero-voy-a-poder-usar-el-OBD-en-otros-programas)
-  - [¿Puedo montar Torque Pro o Hybrid Assistant en mi multimedia?](#Puedo-montar-Torque-Pro-o-Hybrid-Assistant-en-mi-multimedia)
+  - [WTF!!! ¿Puedo montar Torque Pro o Hybrid Assitant en el multimedia de mi Ioniq?](#Puedo-montar-Torque-Pro-o-Hybrid-Assistant-en-mi-multimedia)
   - [¿Pero porqué no utilizar un OBD WiFi directamente?](#Pero-porqué-no-utilizar-un-OBD-WiFi-directamente)
   - [¿Pero porqué no usar un OBD Bluetooth directamente?](#Pero-porqué-no-usar-un-OBD-Bluetooth-directamente)
   - [¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?](#porqué-Lolin-NodeMCU-y-no-otra-placa-de-la-familia-ESP)
   - [Instalación del software ESP-LINK](#instalación-del-software-esp-link)
 
+- [Instalación del software ESP-LINK](#Instalación del software ESP-LINK)
 - [Modificación del OBD](#modificación-del-OBD)
+
 
 
 
@@ -73,7 +75,7 @@ Si, yo continuo utilizándolo con Torque o Hybrid Assistant desde mi smartphone 
 ![IMG_20190322_233611_294](https://user-images.githubusercontent.com/50306926/59950477-57b45a80-9476-11e9-8835-0e7f98892dc2.jpg)
 
 
-### WTF!!! ¿Puedo montar Torque Pro o Hybrid Assitant en mi multimedia?
+### WTF!!! ¿Puedo montar Torque Pro o Hybrid Assitant en el multimedia de mi Ioniq?
 Si, pero no es aquí donde te explicaré eso. Visita [Ioniq Spain](https://ioniqspain.wordpress.com/2019/02/20/acceso-completo-a-la-capa-android/), el blog de nuestro compañero Smoje79, y podrás ver como hacerlo.
 
 
