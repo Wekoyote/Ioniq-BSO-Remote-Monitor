@@ -20,8 +20,9 @@
   - [¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?](#porqué-Lolin-NodeMCU-y-no-otra-placa-de-la-familia-ESP)
   - [Instalación del software ESP-LINK](#instalación-del-software-esp-link)
 
-- [Instalación del software ESP-LINK](#Instalación del software ESP-LINK)
+- [Instalación del software ESP-LINK](#Instalación-del-software-ESP-LINK)
 - [Modificación del OBD](#modificación-del-OBD)
+- [Instalación de Ioniq BSO Remote Monitor en ESP8266](#Instalación-de-Ioniq-BSO-Remote-Monitor-en-ESP8266)
 
 
 
@@ -118,7 +119,7 @@ Por último podéis poner una IP fija para que la placa encargada de recoger los
 
 
 
-## Modificación del OBD
+# Modificación del OBD
 Antes de nada, gracias a Ángel por su idea. El fué el primero en modificar su OBD y en explicame lo que había hecho :-)
 En principio las modificaciones son sencillas, pero requieren habilidad en soldauras de pequeño tamaño. Mi OBD originalente era así:
 
@@ -146,7 +147,76 @@ Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acce
 ![atz](https://user-images.githubusercontent.com/50306926/59956657-cbb02c00-9491-11e9-886a-4882cf2a8678.jpg)
 
 
+# Instalación de Ioniq BSO Remote Monitor en ESP8266
 
+Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nuestra segunda placa ESP8266. Como ya he dicho anteriormente, puedes utilizar la que te venga en gana, pero deberás configurar el `Config.h` antes de compilar el código. En estas 4 primeras líneas puedes escoger si utilizar o no el bot de Telegram, cliente de DDNS (DNS dinámico), habilitar el modo test para pruebas sin el OBD y si utilizas un ESP WIFI Kit 8 de Heltec o cualquier otro ESP. Si no tienes esa placa, déjala comentada ya que podrás usar cualquiera.
+
+```c#
+#define ENABLE_TELEGRAM;          //Disconnect if you do not want notifications by Telegram bot
+#define ENABLE_DDNS;              //Disconnect if not use dynamic DNS
+//#define ENABLE_TEST_MODE        //If enabled, for send data tests
+//#define ENABLE_HELTEC_WIFI_Kit_8  //If defined, enable for compile HELTEC_WIFI_Kit_8
+```
+<br/>
+<br/>
+
+
+`Config.h` lleva la posibilidad de utilizar dos configuraciones de WiFi y OBD diferentes. La primera es la que se usa si habilitas el `TEST_MODE`. Este modo permite trabajar sin un OBD, enviandose tramas de MQTT generadas manualmente y que permiten probar la aplicación y su funcionamiento en tu smartphone o en un navegador en tu ordenador. Verás que el `TEST_MODE` incluye una IP del OBD, pero no es necesaria que exista en ese modo. Debes desabilitar `TEST_MODE` para el poder trabajar de forma normal. Fíjate que el puerto es el 2323, que es, junto al 23, los que ESP-LINK utiliza.
+
+```c#
+// ***************************************************************************
+// IMPORTANT: Enable wifi and OBD fot test or work in Ioniq
+// ***************************************************************************
+#ifdef ENABLE_TEST_MODE  ///Enable wifi for test in your LAN
+    int testLine = 1; 
+    const char* ssid = "YourSSIDForTest";
+    const char* password = "YourPasswordForTest";
+    int port= 2323; // Port OBD device
+    IPAddress serverOBD(192,168,1,200);  //IP address OBD device
+    
+#else  //Enable wifi and IP for OBD in your Ioniq
+    int testLine = 0; 
+    const char* ssid = "YourSSIDIoniq";
+    const char* password = "PasswordWifiIoniq";
+    int port= 23; // Port OBD device
+    IPAddress serverOBD(192,168,0,2);  //IP address OBD device
+#endif
+```
+<br/>
+<br/>
+<br/>
+
+
+La configuración en `Config.h` lleva dos ejemplos de servidores MQTT. Yo utilizo [CloudMQTT](https://www.cloudmqtt.com/) ya que permite altas gratuitas. Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que si la placa está apagada, visualizo los últimos datos enviados. Adafruit no permite esa característica. 
+
+Por supuesto que podeís utilizar el servidor MQTT que mas os guste. Espero vuestros comentarios al respecto.
+
+```c#
+/*
+// ***************************************************************************
+// Very interesting to be used with IFTTT, but it has the inconveneinte that
+// does not support persistence in MQTT
+// ***************************************************************************
+const char* mqtt_server = "io.adafruit.com";
+const int mqttPort = 1883;
+const char* mqttUser = "YourUsername";                           // Your Username
+const char* mqttPassword = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // Your Active Key Key
+const char* nodemqtt= "Username/f/ioniq";  //                   // Your feed
+*/
+
+
+// ***************************************************************************
+// Config server mqttt cloudmqtt.com. Support persistence data.
+// ***************************************************************************
+const char* mqtt_server = "m24.cloudmqtt.com";  // Your server in CloudMQTT
+const int mqttPort = 14357;                     // Your port NOT SSL
+const char* mqttUser = "UserCloudMQTT";                 // Your user in CloudMQTT
+const char* mqttPassword = "PasswordCloudMQTT";           // Your password in CloudMQTT
+const char* nodemqtt= "ioniq/bso";              // Your topiq in CloudMQTT
+```
+<br/>
+<br/>
+<br/>
 
 ## Screenshots
 **SIN CARGAR**
