@@ -71,6 +71,7 @@ Esa fue mi primera idea, mediante un ESP32 conectar al OBD y de ahí enviar los 
 Muy simple, es la que tenía a mano. Una muy buena opción es Wemos D1 Mini ya que es pequeña, igual de barata y funciona perfectamente. Posiblemente sustituya Lolin por esta placa. Agadeceré que me digáis cual usáis vosotros. 
 
 
+
 ## Instalación del software ESP-LINK
 Después de hacer diferentes pruebas con software propio, la mejor opción es utilizar [ESP-LINK](https://github.com/jeelabs/esp-link). Es un software fluido, facil de gestionar y que nos permite multitud de opciones. Tal como ya he dicho anteriormente, seguid las instrucciones de instalación y comprobad que funciona aunque os adjunto la configuración utilizada por mi compañero Ángel desde el programador de firmware del NodeMCU: 
 
@@ -125,12 +126,12 @@ Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acce
 ## Screenshots
 **SIN CARGAR**
 
-![Screenshot_IONIQ_BSO_not_charge](https://user-images.githubusercontent.com/50306926/59941540-b91bff80-945d-11e9-98c9-408788477c5f.png)
+![Screenshot_IONIQ_BSO_not_charge](https://user-images.githubusercontent.com/50306926/59957781-2d759380-949c-11e9-91c6-4f71c3bdcddf.jpg)
 
 
 **DURANTE LA CARGA**
 
-![Screenshot_IONIQ_BSO_charging](https://user-images.githubusercontent.com/50306926/59941541-b91bff80-945d-11e9-9719-e03ffd199031.png)
+![Screenshot_IONIQ_BSO_charging](https://user-images.githubusercontent.com/50306926/59957752-c9eb6600-949b-11e9-9f2a-82c575926ec2.jpg)
 
 
 **EJEMPLO DE PERSONALIZACIÓN**
