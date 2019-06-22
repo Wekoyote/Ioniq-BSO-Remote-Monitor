@@ -314,7 +314,16 @@ Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo qu
 
 
 # Visualización de datos en tu smartphoen o navegador
-Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero 
+Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero `index.html`con un editor de texto y localizar las siguientes líneas, donde debes colocar los datos de conexión a servidor del broker MQTT:
+
+```javascript
+		/// CONFIGURATION MQTT BROKER
+		usuario = 'YourUser';
+        contrasena = 'YourPassword';
+		var client = new Paho.MQTT.Client("m24.cloudmqtt.com", 12345, clientId);  // Edit port number
+```
+
+
 
 
 ## Screenshots
