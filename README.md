@@ -181,7 +181,7 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 
 
 ### Configuración de WiFi y OBD
-`Config.h` lleva la posibilidad de utilizar dos configuraciones de WiFi y OBD diferentes. La primera es la que se usa si habilitas el `TEST_MODE`. Este modo permite trabajar sin un OBD, enviandose tramas de MQTT generadas manualmente y que permiten probar la aplicación y su funcionamiento en tu smartphone o en un navegador en tu ordenador. Verás que el `TEST_MODE` incluye una IP del OBD, pero no es necesaria que exista en ese modo. Debes desabilitar `TEST_MODE` para el poder trabajar de forma normal. Fíjate que el puerto es el 2323, que es, junto al 23, los que ESP-LINK utiliza.
+`Config.h` lleva la posibilidad de utilizar dos configuraciones de WiFi y OBD diferentes. La primera es la que se usa si habilitas el `TEST_MODE`. Este modo permite trabajar sin un OBD, enviándose tramas de MQTT generadas manualmente y que permiten probar la aplicación y su funcionamiento en tu smartphone o en un navegador en tu ordenador. Puedes modificar, añadir o quitar tramas de prueba desde la función `testString`que está al final del código. Verás que el `TEST_MODE` incluye una IP del OBD, pero no es necesaria que exista realmente. Debes desabilitar `TEST_MODE` para el poder trabajar de forma normal. Fíjate que el puerto es el 2323, que es junto al 23, los que ESP-LINK utiliza.
 
 ```c#
 // ***************************************************************************
@@ -209,14 +209,14 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 ### Configuración del broker MQTT
 ¿No conoces MQTT? Pues de nuevo Google puede ayudarte, pero puedes visitar [¿Qué es MQTT? Su importancia como protocolo IOT](https://www.luisllamas.es/que-es-mqtt-su-importancia-como-protocolo-iot/) del incombustible [Lluis Llamas](https://www.luisllamas.es/) que tiene este y otros artículos muy interesantes. 
 
-Si mas o menos ya estás al dia de MQTT y si estás dado de alta en ningún servicio, puedes visitar [Cloudmqtt.com](https://cloudmqtt.com) y realizar el alta gratuita. Habilita un plan `Cute Cat`con el que tienes suficiente para este servicio. CUando estes dado de alta, habilita usuario desde *Users and ACL* y posteriormente un *nodo* o como ellos le llaman *ACL*. Puedes crear el usuario y nodo como tu quieras, pero si no quieres modificar la configuración, utiliza el usuario `ioniq` y el nodo `bso` y habilita lectura y escritura, por lo que debería quedar así:
+Si mas o menos ya estás al dia de MQTT y si estás dado de alta en ningún servicio, puedes visitar [Cloudmqtt.com](https://cloudmqtt.com) y realizar el alta gratuita. Habilita un plan `Cute Cat` con el que tienes suficiente para este servicio. Cuando estes dado de alta, habilita un usuario desde *Users and ACL* y posteriormente un *nodo* o como ellos le llaman *ACL*. Puedes crear el usuario y nodo como tu quieras, pero si no quieres modificar la configuración que he puesto utiliza el usuario `ioniq` y el nodo `bso`, y habilita lectura y escritura. Debería quedar así:
 
 
 ![cloud](https://user-images.githubusercontent.com/50306926/59964449-3ea4bb80-9501-11e9-95bd-a284a6d38ed1.jpg)
 
-La configuración en `Config.h` lleva dos ejemplos de servidores MQTT, estando el de la configuración de Adafruit comentado. Como ya he comentado, yo utilizo [CloudMQTT](https://www.cloudmqtt.com/) ya que permite altas gratuitas. Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que aunque la placa está apagada, visualizo los últimos datos enviados. Adafruit no permite esa característica, sin realizar acciones intermedias.
+La configuración en `Config.h` lleva dos ejemplos de servidores MQTT, estando el de la configuración de Adafruit comentado. Como ya he dicho, yo utilizo [CloudMQTT](https://www.cloudmqtt.com/). Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que aunque la placa está apagada se visualicen los últimos datos enviados. Adafruit no permite esa característica sin realizar acciones intermedias.
 
-Por supuesto que podeís utilizar el servidor MQTT que mas os guste. Espero vuestros comentarios al respecto.
+Por supuesto que podéis utilizar el servidor MQTT que mas os guste. Espero vuestros comentarios al respecto.
 
 ```c#
 /*
@@ -245,11 +245,11 @@ const char* nodemqtt= "ioniq/bso";               // Your topiq in CloudMQTT
 <br/>
 
 ### Configuración de Telegram
-El siguiente bloque es la configuración del Bot de Télegram, el cual permite recibir los informes de carga cuando esta finaliza:
+El siguiente bloque es la configuración del bot de Télegram, el cual permite recibir los informes de carga cuando esta finaliza:
 
 ![telegram](https://user-images.githubusercontent.com/50306926/59963526-59bcfe80-94f4-11e9-8425-da87d4fcc1f0.jpg)
 
-La configuración es mu sencilla, pero dirás...¿Como diablos creo y configuro el Bot de Telegram?. Pues primero de todo, Google es tu amigo y ahí encontrarás respuestas. De todas formas te dejo unos links que pueden ser de interés:
+La configuración es mu sencilla, pero dirás...¿Como diablos creo y configuro el bot de Telegram?. Pues primero de todo, Google vuelve a ayudarte y ahí encontrarás respuestas. De todas formas te dejo unos links que pueden ser de interés:
 - [How do I create a bot?](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
 - [How to create an Telegram Bot Token & Get Chat ID?](https://www.youtube.com/watch?v=2jdsvSKVXNs)
 
@@ -264,7 +264,7 @@ IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
 
 
 ### Configuración de DDNS
-Si lo deseas, puedes configurar el servicio de DDNS. ¿Qué para que lo necesitas? Pues por ejemplo por si quieres acceder desde el exterior a tu OBD o necesitas saber la IP de tu vehículo. Yo l ohe dejado preparado ya que a mi si me interesa en un futuro próximo para modificaciones que tengo pensadas. Yo utilizo el servisio de [NO-IP](https://www.noip.com/), pero verás que puedes usar otros.
+Si lo deseas, puedes configurar el servicio de DDNS. ¿Qué para que lo necesitas? Pues por ejemplo por si quieres acceder desde el exterior a tu OBD o necesitas saber la IP de tu vehículo. Yo lo he dejado preparado ya que me interesa en un futuro próximo para modificaciones que tengo pensadas. Yo utilizo el servicio de [NOIP.com](https://www.noip.com/), pero verás que puedes usar otros.
 
 ```c#
 // ***************************************************************************
@@ -280,7 +280,7 @@ int ddnsUpdate = 10000; // Check for New Ip Every 10 Seconds.
 <br/>
 
 ### Otras configuraciones
-En este apartado está el nombre del vehículo que se envía en la notificación vía Telegram, el tamaño de la batería del nuestro ioniq y las configuraciones horarias. tengo pendiente calcular automáticamente si es verano o invierno.
+En este apartado está el nombre del vehículo que se envía en la notificación vía Telegram, el tamaño de la batería del nuestro Ioniq y las configuraciones horarias de zona. Tengo pendiente calcular automáticamente si es verano o invierno.
 ```c#
 String vehicleID = "My IONIQ";   // VehicleID is sended in telegram message
 float kWhBattery = 8.9;          // For Ioniq PHEV
@@ -290,7 +290,7 @@ bool daylightSaving = true;      // False for winter time, true for summer time.
 ```
 
 ## Librerías
-En las librerias `NTPClient.h` y `EasyDDNS.h` añado las URL's de descarga.
+En las librerias `NTPClient.h` y `EasyDDNS.h` añado las URL's de descarga para facilitar la instalación.
 ```c#
 #include <time.h>              //
 #include <NTPClient.h>         // https://github.com/arduino-libraries/NTPClient
@@ -302,7 +302,8 @@ En las librerias `NTPClient.h` y `EasyDDNS.h` añado las URL's de descarga.
 ```
 
 **IMPORTANTE:** 
-Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que es la encargada de enviar los paquetes MQTT al broker. Como se envía en un único *topic*, el tamaño supera los 127 bits máximos que permite, por lo que debe modicicarse el tamaño de `MQTT_MAX_PACKET_SIZE`a 256. Deberás buscar el fichero `PubSubClient.h`que debería estar en */Arduino/libraries/PubSubClient/src* y editarlo:
+Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que es la encargada de enviar los paquetes MQTT al broker. Como se envía en un único *topic* y el tamaño supera los 127 bits máximos que permite, debe modificarse el tamaño de `MQTT_MAX_PACKET_SIZE`a 256. Deberás buscar el fichero `PubSubClient.h`que debería estar en *Arduino/libraries/PubSubClient/src* y editarlo:
+
 ```c#
 // MQTT_MAX_PACKET_SIZE : Maximum packet size
 #ifndef MQTT_MAX_PACKET_SIZE
@@ -313,13 +314,13 @@ Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que 
 <br/>
 
 # Compilado e instalación
-Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo que habilites el `TEST_MODE`para poder ver como funciona a través de la cónsola serie y directamente podrás ver los datos en tu broker de MQTT.
+Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo que habilites el `TEST_MODE` para poder ver como funciona a través de la cónsola serie y así podrás ver los datos en tu broker de MQTT a tiempo real.
 
 ![console](https://user-images.githubusercontent.com/50306926/59964207-02bc2700-94fe-11e9-987e-66417af0bc00.jpg)
 
 
 # Visualización de datos en tu smartphone o navegador
-Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero `index.html`con un editor de texto y localizar las siguientes líneas, donde debes colocar los datos de conexión a servidor del broker MQTT:
+Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero `index.html` con un editor de texto y localizar las siguientes líneas, donde debes colocar los datos de conexión a servidor del broker MQTT:
 
 ```javascript
 /// CONFIGURATION MQTT BROKER
@@ -328,9 +329,9 @@ contrasena = 'YourPassword';
 var client = new Paho.MQTT.Client("m24.cloudmqtt.com", 12345, clientId);  // Edit port number
 ```
 
-Ahora visualiza `index.html` con un navegador y si tienes la placa con el Ioniq BSO Remote Monitor en funcionamiento y en `TEST_MODE`, deberías ver como los datos van actualizándose. Si es así, copia la carpeta `HTML`a tu smartphone mediante algunos de los programas existentes en la APP Store y deja esa carpeta en algún lugar accesible, como por ejemplo la carpeta *Downloads*. Ahora puedes abrir el `index.html` desde el navegador de tu móvil y ver que todo funciona.
+Ahora abre `index.html` con un navegador y si tienes la placa con el Ioniq BSO Remote Monitor en funcionamiento y en `TEST_MODE`, deberías ver como los datos van actualizándose. Si es así, copia la carpeta `HTML` a tu smartphone mediante algunos de los programas existentes en la APP Store y deja esa carpeta en algún lugar accesible, como por ejemplo la carpeta *Downloads*. Ahora puedes abrir el `index.html` desde el navegador de tu móvil y ver que todo funciona.
 
-Estamos acabando.... Comenta la linea correspondiente en `Confih.h` para desactivar `TEST_MODE`, compila y envía el programa de nuevo a tu placa ESP. Recuerda poner los datos de la WiFi de tu vehículo para que funcione, ya sea compartiendo desde tu smartphone o mediante un router. Conecta el OBD modificado en el Ioniq, alimenta la placa ESP con el programa todo y deberías ver los datos de tu vehículo. 
+Estamos acabando.... Comenta la linea correspondiente en `Config.h` para desactivar `TEST_MODE`, compila y envía el programa de nuevo a tu placa ESP. Recuerda poner los datos de la WiFi de tu vehículo para que funcione, ya sea compartiendo desde tu smartphone o mediante un router. Conecta el OBD modificado en el Ioniq, alimenta la placa ESP con el programa todo y deberías ver los datos de tu vehículo. 
 
 ¿Funciona? Espero que si.
 
@@ -358,8 +359,17 @@ Estamos acabando.... Comenta la linea correspondiente en `Confih.h` para desacti
 
 
 ## Descarga de responsabilidad
-Ioniq BSO Remote Monitor  ("EL SOFTWARE") SE PROPORCIONA COMO ESTÁ. UTILICE EL SOFTWARE BAJO SU PROPIO RIESGO. LOS AUTORES NO GARANTIZAN EL RENDIMIENTO O LA ADECUACIÓN PARA UN PROPÓSITO PARTICULAR, O NINGUNA OTRA GARANTÍA EXPRESA O IMPLÍCITA. NINGUNA COMUNICACIÓN ORAL O ESCRITA DE O AUTORIZACIÓN DE LOS AUTORES CREARÁ UNA GARANTÍA. BAJO NINGUNA CIRCUNSTANCIA, LOS AUTORES SERÁN RESPONSABLES POR DAÑOS DIRECTOS, INDIRECTOS, ESPECIALES, INCIDENTALES O CONSECUENTES RESULTANTES DEL USO, MAL USO O INCAPACIDAD DE USAR EL SOFTWARE, INCLUSO SI EL AUTOR HA SIDO AVISO DE LA POSIBILIDAD DE TAL DAMÁ. ESTAS EXCLUSIONES Y LIMITACIONES PUEDEN NO APLICARSE EN TODAS LAS JURISDICCIONES. PUEDE TENER DERECHOS ADICIONALES Y ALGUNAS DE ESTAS LIMITACIONES PUEDEN NO APLICARSE A USTED. ESTE SOFTWARE SOLO ESTÁ DISEÑADO PARA USO CIENTÍFICO.
-
+*Ioniq BSO Remote Monitor  ("El Software") se proporciona como está. Utilice el software bajo su propio riesgo. Los autores no garantizan el rendimiento o la adecuación para un propósito particular, o ninguna otra garantía expresa o implícita. Ninguna comunicación oral o escrita de o autorización de los autores creará una garantía. Bajo ninguna circunstancia, los autores serán responsables por daños directos, indirectos, especiales, incidentales o consecuentes resultantes del uso, mal uso o incapacidad de usar el software, incluso si el autor ha sido avisado de la posibilidad de tal daño. Estas exclusiones y limitaciones pueden no aplicarse en todas las jurisdicciones. Puede tener derechos adicionales y algunas de estas limitaciones pueden no aplicarse a usted. Este software solo está diseñado para uso científico.*
+<br/>
+<br/>
+----------------------------------------------------------
+<br/>
+<br/>
 # ENGLISH (Soon)
-# Formal disclaimer
-Ioniq BSO Remote Monitor (“THE SOFTWARE”) IS PROVIDED AS IS. USE THE SOFTWARE AT YOUR OWN RISK. THE AUTHORS MAKE NO WARRANTIES AS TO PERFORMANCE OR FITNESS FOR A PARTICULAR PURPOSE, OR ANY OTHER WARRANTIES WHETHER EXPRESSED OR IMPLIED. NO ORAL OR WRITTEN COMMUNICATION FROM OR INFORMATION PROVIDED BY THE AUTHORS SHALL CREATE A WARRANTY. UNDER NO CIRCUMSTANCES SHALL THE AUTHORS BE LIABLE FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES RESULTING FROM THE USE, MISUSE, OR INABILITY TO USE THE SOFTWARE, EVEN IF THE AUTHOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THESE EXCLUSIONS AND LIMITATIONS MAY NOT APPLY IN ALL JURISDICTIONS. YOU MAY HAVE ADDITIONAL RIGHTS AND SOME OF THESE LIMITATIONS MAY NOT APPLY TO YOU. THIS SOFTWARE IS ONLY INTENDED FOR SCIENTIFIC USAGE.
+
+## Formal disclaimer
+*Ioniq BSO Remote Monitor (“The Software”) is provided as is. Use the software at your own risk. The authors make no warranties as to performance or fitness for a particular purpose, or any other warranties whether expressed or implied. no oral or written communication from or information provided by the authors shall create a warranty. Under no circumstances shall the authors be liable for direct, indirect, special, incidental, or consequential damages resulting from the use, misuse, or inability to use the software, even if the author has been advised of the possibility of such damages. These exclusions and limitations may not apply in all jurisdictions. You may have additional rights and some of these limitations may not apply to you. This software is only intended for scientific usage.*
+
+
+
+
