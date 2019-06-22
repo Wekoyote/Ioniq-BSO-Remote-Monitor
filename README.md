@@ -333,6 +333,7 @@ Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el
 
 ```javascript
 /// CONFIGURATION MQTT BROKER
+topic = 'ioniq/bso';  // Configure your topic
 usuario = 'YourUser';
 contrasena = 'YourPassword';
 var client = new Paho.MQTT.Client("m24.cloudmqtt.com", 12345, clientId);  // Edit port number
