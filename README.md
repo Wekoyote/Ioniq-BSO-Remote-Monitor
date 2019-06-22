@@ -3,7 +3,8 @@
 
 ![Screenshot_IONIQ_BSO](https://user-images.githubusercontent.com/50306926/59957631-8d6b3a80-949a-11e9-94d0-610644a23630.jpg)
 
-Visita [Mi lista de Youtube](https://www.youtube.com/playlist?list=PLTzjC-Oy2s-5wAB1-0_I-gAGDHgAlO9_A) para ver algunos videos de ejemplo
+![yt](https://user-images.githubusercontent.com/50306926/59966678-19737580-9520-11e9-961e-71a477c88894.jpg) Visita [Mi lista de Youtube](https://www.youtube.com/playlist?list=PLTzjC-Oy2s-5wAB1-0_I-gAGDHgAlO9_A) para ver algunos videos de ejemplo
+
 ---------------------------------------------------------------
 
 # VERSIÓN EN ESPAÑOL
