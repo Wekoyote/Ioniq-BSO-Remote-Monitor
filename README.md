@@ -261,8 +261,9 @@ La configuración es mu sencilla, pero dirás...¿Como diablos creo y configuro 
 - [How do I create a bot?](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
 - [How to create an Telegram Bot Token & Get Chat ID?](https://www.youtube.com/watch?v=2jdsvSKVXNs)
 
-En el apartado de `Config.h` únicamente deberás poner el token y el chatId que corresponda.
+En el apartado de `Config.h` únicamente deberás poner el idioma del mensaje, token y el chatId que corresponda.
 ```c#
+String telegramLang= "ESP"  // ESP= Spanish |  ENG = English
 String BOTtoken = "botxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  //token format is botXXXXXXXXXXXXXXXXXXXXXXXXXXX
 String Chat_id = "123456789"; // Chat_id
 IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
