@@ -88,12 +88,15 @@ La aplicación permite monitorizar los siguientes datos:
 
 ### ¿Como sé que mi OBD va a funcionar?
 Lo siento, pero deberás hacr pruebas previas para saber que sirve. Yo todavía no puedo darte un link correcto de compra o de un fabricante concreto, ya que el mio hace muchos años que lo compré y funciona perfectamente, pero tras numerosas pruebas y compras de diferentes OBD's sabemos que los que tienen version 1.5 de firmware disponen de una mayor probabilidad de funcionar, aunque no todos. Suelen funcionar OBD's antiguos, de mas de 3 ó 4 años. Además necesitarás sacar la placa bluetooth o WiFi que lleva para realizar la modificación necesaria, por lo que no podrá ser un OBD monoplaca, o que no permita su manipulación. Si el OBD que tienes dispone de la placa bluetooth o WiFi separable, antes de manipularlo deberás probar con Torque Pro y los ficheros PID de [JejuSoul](https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs) que encontrarás en https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs. No te voy a engañar... es una loteria encontrar uno que funcione, pero los productos de China son así. Sobre todo no te fies del exterior con las imagenes que pondré ya que no es garantia de que funcione. Si con los PID de [JejuSoul](https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs) te funciona y puedes leer parámetros de la batería, casi seguro que es garantía de éxito.
+<br/>
+<br/>
 
 ### ¿Pero voy a poder usar el OBD en otros programas?
 Si, yo continuo utilizándolo con Torque o Hybrid Assistant desde mi smartphone o, mejor todavía, desde el multimedia de mi Ioniq. Por ese motivo utilizo dos ESP8266 y así poder utilizar otros programas. Eso si, no puedo utilizar multiples APP's y mi aplicación simultáneamente. Adjunto captura de Torque pro en mi multimedia del Ioniq:
 
 ![IMG_20190322_233611_294](https://user-images.githubusercontent.com/50306926/59950477-57b45a80-9476-11e9-8835-0e7f98892dc2.jpg)
-
+<br/>
+<br/>
 
 ### WTF!!! ¿Puedo montar Torque Pro o Hybrid Assitant en el multimedia de mi Ioniq?
 Si, pero no es aquí donde te explicaré eso. Visita [Ioniq Spain](https://ioniqspain.wordpress.com/2019/02/20/acceso-completo-a-la-capa-android/), el blog de nuestro compañero Smoje79, y podrás ver como se hace.
