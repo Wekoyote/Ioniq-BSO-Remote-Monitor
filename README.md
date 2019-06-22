@@ -26,6 +26,7 @@ La aplicación permite monitorizar los siguientes datos:
 * Cantidad de energía gargada durante el proceso
 * Tiempo estimado de carga para completar el 100%
 * Informe de carga vía Telegram bot
+* Cliente a servicios de DDNS
 
 
 
