@@ -403,6 +403,7 @@ Estamos acabando.... Comenta la linea correspondiente en `Config.h` para desacti
 
 ## Descarga de responsabilidad
 *Ioniq BSO Remote Monitor  ("El Software") se proporciona como está. Utilice el software bajo su propio riesgo. Los autores no garantizan el rendimiento o la adecuación para un propósito particular, o ninguna otra garantía expresa o implícita. Ninguna comunicación oral o escrita de o autorización de los autores creará una garantía. Bajo ninguna circunstancia, los autores serán responsables por daños directos, indirectos, especiales, incidentales o consecuentes resultantes del uso, mal uso o incapacidad de usar el software, incluso si el autor ha sido avisado de la posibilidad de tal daño. Estas exclusiones y limitaciones pueden no aplicarse en todas las jurisdicciones. Puede tener derechos adicionales y algunas de estas limitaciones pueden no aplicarse a usted. Este software solo está diseñado para uso científico.*
+
 <br/>
 <br/>
 ----------------------------------------------------------
