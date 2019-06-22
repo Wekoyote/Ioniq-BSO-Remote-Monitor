@@ -338,18 +338,23 @@ void recvEndMarker(int comandoOBD) {
                   timeInitial=(getTimeStampString());  
                   timeInitialEpoch=(timeClient.getEpochTime());
                 }   
+ 
+               if(fan == "1" && telegramLang == "ESP"){
+                    fanStart= "Arrancó";
+                } 
+               if(fan == "1" && telegramLang == "ENG"){
+                    fanStart= "If it started";
+                } 
+                 
              }else{
               endCharge=0;
-
+            
             #ifdef ENABLE_TELEGRAM
               if(envioInforme==1 && (timeClient.getEpochTime()-timeInitialEpoch)>30 && bsoInitial>10 && bsoInitial<bsoDecimal && (cecDecimal-cecInitial)>0){  //To avoid "bounces" is not sent if the load has been greater than 60 seconds           
                   timeClient.update();
                   Serial.println("Send Telegram");
 
-                if(telegramLang == "ESP"){  
-                    if(fan == "1"){
-                      fanStart= "Arrancó";
-                    }                  
+                if(telegramLang == "ESP"){      
                           telegramMSG = " ";
                           telegramMSG +="<b>INFORME DE CARGA DE</b>%0A";
                           telegramMSG +="<b>" ; telegramMSG +=vehicleID; telegramMSG +=  "</b>%0A";
@@ -372,9 +377,6 @@ void recvEndMarker(int comandoOBD) {
                           telegramMSG +="<b>Ventilador:</b> " ; telegramMSG +=fanStart; telegramMSG +=  " %0A%0A";      
                           telegramMSG +="Ioniq SOC Remonte Monitor %0Aby <b>WE Koyote</b> %0A%0A";      
                 }else{
-                      if(fan == "1"){
-                         fanStart= "If it started";
-                        } 
                           telegramMSG = " ";
                           telegramMSG +="<b>CHARGE REPORT</b>%0A";
                           telegramMSG +="<b>" ; telegramMSG +=vehicleID; telegramMSG +=  "</b>%0A";
@@ -397,6 +399,7 @@ void recvEndMarker(int comandoOBD) {
                           telegramMSG +="<b>Fan battery:</b> " ; telegramMSG +=fanStart; telegramMSG +=  " %0A%0A";      
                           telegramMSG +="Ioniq SOC Remonte Monitor %0Aby <b>WE Koyote</b> %0A%0A";      
                 }
+     
                    
                    telegramSend(telegramMSG);              
                }
@@ -415,7 +418,7 @@ void recvEndMarker(int comandoOBD) {
                }
             }
       }
-     
+                 
         // ***************************************************************************
         // For debug in console
         // ***************************************************************************     
