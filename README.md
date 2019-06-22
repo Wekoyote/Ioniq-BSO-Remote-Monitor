@@ -344,23 +344,23 @@ Estamos acabando.... Comenta la linea correspondiente en `Config.h` para desacti
 ¿Funciona? Espero que si.
 
 
-## Screenshots
-**SIN CARGAR**
+# Screenshots
+## **SIN CARGAR**
 
 ![Screenshot_IONIQ_BSO_not_charge](https://user-images.githubusercontent.com/50306926/59957781-2d759380-949c-11e9-91c6-4f71c3bdcddf.jpg)
 
 
-**DURANTE LA CARGA**
+## **DURANTE LA CARGA**
 
 ![Screenshot_IONIQ_BSO_charging](https://user-images.githubusercontent.com/50306926/59957752-c9eb6600-949b-11e9-9f2a-82c575926ec2.jpg)
 
 
-**EJEMPLO DE PERSONALIZACIÓN**
+## **EJEMPLO DE PERSONALIZACIÓN**
 
 ![Screenshot_IONIQ_BSO_example](https://user-images.githubusercontent.com/50306926/59941543-b91bff80-945d-11e9-8704-061b4d2b4040.png)
 
 
-**OTRA PERSONALIZACIÓN**
+## **OTRA PERSONALIZACIÓN**
 
 ![Screenshot_IONIQ_BSO_example1](https://user-images.githubusercontent.com/50306926/59941542-b91bff80-945d-11e9-92df-750d3fc649ae.png)
 
