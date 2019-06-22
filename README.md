@@ -24,7 +24,11 @@
 - [Modificación del OBD](#modificación-del-OBD)
 - [Instalación de Ioniq BSO Remote Monitor en ESP8266](#Instalación-de-Ioniq-BSO-Remote-Monitor-en-ESP8266)
   -[Configuración de `Config.h`](#Configuración-de-`Config.h`)
-    -
+    - [Configuración de WiFi y OBD] (#Configuración-de-WiFi-y-OBD) 
+    - [Configuración del broker MQTT](#Configuración-del-broker-MQTT])
+    - [Configuración de Telegram](#Configuración-de-Telegram])
+    - [Configuración de DDNS](#Configuración-de-DDNS)
+    - [Otras configuraciones](#Otras-configuraciones)
 
 
 
@@ -258,8 +262,6 @@ int ddnsUpdate = 10000; // Check for New Ip Every 10 Seconds.
 <br/>
 <br/>
 
-
-
 ### Otras configuraciones
 En este apartado está el nombre del vehículo, que se envía en la notificación vía Telegram y el tamaño de la batería que quiero usar en un futuro para la versión EV.
 ```c#
@@ -268,6 +270,7 @@ float kWhBattery = 8.9;           //For Ioniq PHEV
 //float kWhBattery = 38,3;        //For Ioniq EV
 ```
 
+## Librerías
 
 
 
