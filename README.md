@@ -313,7 +313,7 @@ Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo qu
 ![console](https://user-images.githubusercontent.com/50306926/59964207-02bc2700-94fe-11e9-987e-66417af0bc00.jpg)
 
 
-# Visualización de datos en tu smartphoen o navegador
+# Visualización de datos en tu smartphone o navegador
 Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero `index.html`con un editor de texto y localizar las siguientes líneas, donde debes colocar los datos de conexión a servidor del broker MQTT:
 
 ```javascript
@@ -323,7 +323,11 @@ Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el
 		var client = new Paho.MQTT.Client("m24.cloudmqtt.com", 12345, clientId);  // Edit port number
 ```
 
+Ahora visualiza `index.html` con un navegador y si tienes la placa con el Ioniq BSO Remote Monitor en funcionamiento y en `TEST_MODE`, deberías ver como los datos van actualizándose. Si es así, copia la carpeta `HTML`a tu smartphone mediante algunos de los programas existentes en la APP Store y deja esa carpeta en algún lugar accesible, como por ejemplo la carpeta *Downloads*. Ahora puedes abrir el `index.html` desde el navegador de tu móvil y ver que todo funciona.
 
+Estamos acabando.... Comenta la linea correspondiente en `Confih.h` para desactivar `TEST_MODE`, compila y envía el programa de nuevo a tu placa ESP. Recuerda poner los datos de la WiFi de tu vehículo para que funcione, ya sea compartiendo desde tu smartphone o mediante un router. Conecta el OBD modificado en el Ioniq, alimenta la placa ESP con el programa todo y deberías ver los datos de tu vehículo. 
+
+¿Funciona? Espero que si.
 
 
 ## Screenshots
