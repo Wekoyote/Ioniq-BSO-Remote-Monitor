@@ -317,10 +317,10 @@ Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo qu
 Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero `index.html`con un editor de texto y localizar las siguientes líneas, donde debes colocar los datos de conexión a servidor del broker MQTT:
 
 ```javascript
-		/// CONFIGURATION MQTT BROKER
-		usuario = 'YourUser';
-        contrasena = 'YourPassword';
-		var client = new Paho.MQTT.Client("m24.cloudmqtt.com", 12345, clientId);  // Edit port number
+/// CONFIGURATION MQTT BROKER
+usuario = 'YourUser';
+contrasena = 'YourPassword';
+var client = new Paho.MQTT.Client("m24.cloudmqtt.com", 12345, clientId);  // Edit port number
 ```
 
 Ahora visualiza `index.html` con un navegador y si tienes la placa con el Ioniq BSO Remote Monitor en funcionamiento y en `TEST_MODE`, deberías ver como los datos van actualizándose. Si es así, copia la carpeta `HTML`a tu smartphone mediante algunos de los programas existentes en la APP Store y deja esa carpeta en algún lugar accesible, como por ejemplo la carpeta *Downloads*. Ahora puedes abrir el `index.html` desde el navegador de tu móvil y ver que todo funciona.
