@@ -3,8 +3,37 @@
 
 ![Screenshot_IONIQ_BSO](https://user-images.githubusercontent.com/50306926/59957631-8d6b3a80-949a-11e9-94d0-610644a23630.jpg)
 
+---------------------------------------------------------------
 
-# `VERSIÓN EN ESPAÑOL`
+# VERSIÓN EN ESPAÑOL
+
+[¿Para que sirve?](#para-que-sirve)
+
+[¿Como funciona?](#como-funciona)
+
+[Funcionalidades](#funcionalidades)
+
+[¿Qué necesito?](#qué-necesito)
+
+[Preguntas previas sobre el proyecto](#preguntas-previas-sobre-el-proyecto)
+
+[¿Como sé que el OBD va a funcionar?](#como-sé-que-el-obd-va-a-funcionar)
+
+[¿Pero voy a poder usar el OBD en otros programas?](#preguntas-previas-sobre-el-proyecto)
+
+[¿Puedo montar Torque Pro o Hybrid Assiatnt en mi multimedia?](#preguntas-previas-sobre-el-proyecto)
+
+[¿Pero porqué no utilizar un OBD WiFi directamente?](#preguntas-previas-sobre-el-proyecto)
+
+[¿Pero porqué no usar un OBD Bluetooth directamente?](#preguntas-previas-sobre-el-proyecto)
+
+[¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?](#porque-lolin-nodemcu-y-no-otra-placa-de-la-familia-esp)
+
+[Instalación del software ESP-LINK](#pinstalacion-del-software-esp-link)
+
+[Modificación del OBD](#modificacion-del-obd)
+
+
 
 ## ¿Para que sirve?
 Los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún sistema de monitorización de la batería o del proceso de carga, por lo que decidí hacerme un sistema que me permitiera dejar mi Ioniq cargando y que mediante mi smartphone pudiera ver el proceso y me avise al finalizar con el resumen de dicha carga. Además quería que el sistema fuera lo mas sencillo posible, aunque haya que tener conocimientos de programación y algo de electrónica básica. No es equiparable al sistema BlueLink que se suministra en USA o Corea, pero realiza las funciones básicas para las que se ha programado.
@@ -71,6 +100,8 @@ Esa fue mi primera idea, mediante un ESP32 conectar al OBD y de ahí enviar los 
 ### ¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?
 Muy simple, es la que tenía a mano. Una muy buena opción es Wemos D1 Mini ya que es pequeña, igual de barata y funciona perfectamente. Posiblemente sustituya Lolin por esta placa. Agadeceré que me digáis cual usáis vosotros. 
 
+
+---------------------------------------------------------------
 
 
 ## Instalación del software ESP-LINK
