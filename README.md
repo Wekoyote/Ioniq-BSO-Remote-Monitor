@@ -313,9 +313,8 @@ Si has seguido los pasos indicados, puedes compilar e instalar. Te recomiendo qu
 ![console](https://user-images.githubusercontent.com/50306926/59964207-02bc2700-94fe-11e9-987e-66417af0bc00.jpg)
 
 
-
-
-
+# Visualización de datos en tu smartphoen o navegador
+Ahora es momento de abrir la carpeta HTML de la distribución. Deberás abrir el fichero 
 
 
 ## Screenshots
