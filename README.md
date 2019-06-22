@@ -115,7 +115,8 @@ Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona per
 
 Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acceder al menú *"μC CONSOLE"*. Desde ahí teclea el comando *ATZ* y deberás obtener la respuesta de la versión del firmware del OBD, en mi caso *ELM 327 v1.5*. Si es así, todo funciona correctamente y ya está realizado lo mas duro.
 
-![atz](https://user-images.githubusercontent.com/50306926/59956604-9f94ab00-9491-11e9-9586-a1854220b628.jpg)
+![atz](https://user-images.githubusercontent.com/50306926/59956657-cbb02c00-9491-11e9-886a-4882cf2a8678.jpg)
+
 
 
 
