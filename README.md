@@ -9,7 +9,6 @@
 **As soon as I finish writing in Spanish, I will try to write it in English. Meanwhile, Google Translate will help you.**
 
 - [¿Para que sirve?](#para-que-sirve)
-- [¿Para que sirve?](#para-que-sirve)
 - [¿Como funciona?](#como-funciona)
 - [Funcionalidades](#funcionalidades)
 - [¿Qué necesito?](#qué-necesito)
@@ -35,15 +34,17 @@
     
   - [Librerías](#librerías)  
   - [Compilado e instalación](#Compilado-e-instalación)
+  - [Visualización de datos en tu smartphone o navegador](#Visualización-de-datos-en-tu-smartphone-o-navegador)
+  - [Screenshots](#Screenshots)
 
 
 ## ¿Para que sirve?
-Antes de nada quiero decir que aunque profesionalmente me he dedicado a la programación y he estado relacionado con la electrónica, Arduino, ESP8266 y el lenguaje C++ no es mi mundo. Lo he realizado lo mejor que podía, pero seguro que encontrareis errores y que hay mejores maneras de hacer muchos de los pasos que he programado. Sed benébolos :pray:. Gracias.
+Antes de nada quiero decir que aunque profesionalmente me he dedicado a la programación y he estado relacionado con la electrónica, Arduino, ESP8266 y el lenguaje C++ no es mi mundo. Lo he realizado lo mejor que podía, pero seguro que encontrareis errores y mejores maneras de hacer muchos de los pasos que he programado. Sed benébolos :pray:. Gracias.
 
-Bien, los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún sistema de monitorización de la batería o del proceso de carga, por lo que decidí hacerme un sistema que me permitiera dejar mi Ioniq cargando y que mediante mi smartphone pudiera ver el proceso y me avise al finalizar con el resumen de dicha carga. Además quería que el sistema fuera lo mas sencillo posible, aunque haya que tener conocimientos de programación y algo de electrónica básica. No es equiparable al sistema BlueLink que se suministra en USA o Corea, pero realiza las funciones básicas para las que se ha programado.
+Bien, los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún sistema de monitorización de la batería o del proceso de carga, por lo que decidí hacerme un sistema que me permitiera dejar mi Ioniq cargando y que mediante mi smartphone pudiera ver el estado y me avisase al finalizar de la carga. Además quería que el sistema fuera lo mas sencillo posible, aunque haya que tener conocimientos de programación y algo de electrónica básica. No es equiparable al sistema BlueLink que se suministra en USA o Corea, pero realiza las funciones básicas para las que se ha programado.
 
 ## ¿Como funciona?
-Mediante un lector OBD2 modificado para funcionar con WiFi como cliente, una placa de la familia ESP8266 se conecta al OBD2 y recoge los datos necesarios que envía a un servidor MQTT. Se ha probado mediante los servidores gratuitos de Adafruit y CloudMQTT, auunque puede utilizarse cualquier otro. Posteriormente desde nuestro smartphone vemos a tiempo real el estado de nuestro vehículo a través de una página web que está copiada en nuestro dispositivo, y que no es necesario instalar nnguna aplicación o contratar servicios externos de web o bases de datos. Además, si el usuario dispone de mínimos conocimientos de web y javascript puede crear la pantalla a su medida y gusto. Anímate!
+Aunque os pueda parecer complicado, el sistema es mas sencillo de lo que parece. Mediante un lector OBD2 modificado para funcionar con WiFi como cliente, una placa de la familia ESP8266 se conecta al OBD2 y recoge los datos necesarios que envía a un broker MQTT. Se ha probado mediante los servidores gratuitos de Adafruit y CloudMQTT, aunque puede utilizarse cualquier otro. Posteriormente desde nuestro smartphone veremos a tiempo real el estado de nuestro vehículo a través de una página web que está copiada en nuestro dispositivo, y que no precisa instalar ninguna aplicación o contratar servicios externos de web o bases de datos. Además, si el usuario dispone de mínimos conocimientos de web y javascript puede crear la pantalla a su medida y gusto. Anímate!
 ![esquema](https://user-images.githubusercontent.com/50306926/59946559-24200300-946b-11e9-8d00-6204caec7187.jpg)
 
 ## Funcionalidades
@@ -52,16 +53,14 @@ La aplicación permite monitorizar los siguientes datos:
 * Potencia de carga o descarga de la batería
 * Voltaje del batería
 * Intensidad de carga o descarga
-* Previsión de kilómetros restantes en modi eléctrico
-* Temperatura máxima de la batería
-* Temperatura mínima de la batería
-* Temperatura media de la bateria
-* Visualización del funcionamiento del ventilador de las baterías
-* Estado de conexión del cargador
-* Cantidad de energía cargada durante el proceso
-* Tiempo estimado de carga para completar el 100%
-* Informe de carga vía Telegram bot
-* Cliente a servicios de DDNS
+* Previsión de kilómetros restantes en modo eléctrico
+* Temperatura máxima, mínima y media de la batería
+* Estado del ventilador de las baterías
+* Conector de carga conectado o desconectado
+* Cantidad de energía cargada
+* Tiempo estimado de finalización de carga
+* Informe vía Telegram
+* Cliente DDNS
 * Posibilidad de enlazar con IFTTT para apagar cargadores u otras ideas. Tu imaginación manda...
 
 
@@ -69,7 +68,7 @@ La aplicación permite monitorizar los siguientes datos:
 ## ¿Qué necesito?
 * Primero de todo paciencia y leer las instrucciones. Si te cansa leer, no sigas.
 
-* 2 placas de la familia ESP8266. Yo utilizo una Lolin MCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. Realmente puedes utilizar las placas que te vengan en gana, ya que el softeare debería funcionar. Para pruebas también he utilizado Wemos D1 mini. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio. Eso permite que cuando el coche está cargando, la placa dispone de batería para varios días. Puedes poner un power bank o cualquier otro sistema que se te ocurra.
+* 2 placas de la familia ESP8266. Yo utilizo una Lolin MCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. Realmente puedes utilizar las placas que te vengan en gana, ya que el software debería funcionar sin problemas. Para pruebas también he utilizado Wemos D1 mini. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio. Eso permite que cuando el coche está cargando, la placa dispone de batería para varios días. Puedes poner un power bank o cualquier otro sistema que se te ocurra.
 
 * 1 unidad de OBD2 que funcione con el Hyunda Ioniq PHEV y que sea Bluetooth o WiFi. 
 
