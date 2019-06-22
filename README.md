@@ -1,7 +1,8 @@
 # Ioniq-BSO-Remote-Monitor
 ### Monitor the charge of your Ioniq PHEV remotely from your smartphone
 
-![Screenshot_IONIQ_BSO](https://user-images.githubusercontent.com/50306926/59940566-5cb7e080-945b-11e9-9088-f2885e057302.png)
+![Screenshot_IONIQ_BSO](https://user-images.githubusercontent.com/50306926/59957631-8d6b3a80-949a-11e9-94d0-610644a23630.jpg)
+
 
 # VERSIÓN EN ESPAÑOL
 ## ¿Para que sirve?
