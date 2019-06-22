@@ -24,6 +24,7 @@
 - [Modificación del OBD](#modificación-del-OBD)
 - [Instalación de Ioniq BSO Remote Monitor en ESP8266](#Instalación-de-Ioniq-BSO-Remote-Monitor-en-ESP8266)
   -[Configuración de `Config.h`](#Configuración-de-`Config.h`)
+    -
 
 
 
@@ -155,7 +156,7 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 
 ```c#
 #define ENABLE_TELEGRAM;          //Disconnect if you do not want notifications by Telegram bot
-#define ENABLE_DDNS;              //Disconnect if not use dynamic DNS
+//#define ENABLE_DDNS;              //Disconnect if not use dynamic DNS
 //#define ENABLE_TEST_MODE        //If enabled, for send data tests
 //#define ENABLE_HELTEC_WIFI_Kit_8  //If defined, enable for compile HELTEC_WIFI_Kit_8
 ```
@@ -163,6 +164,7 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 <br/>
 
 
+### Configuración de WiFi y OBD
 `Config.h` lleva la posibilidad de utilizar dos configuraciones de WiFi y OBD diferentes. La primera es la que se usa si habilitas el `TEST_MODE`. Este modo permite trabajar sin un OBD, enviandose tramas de MQTT generadas manualmente y que permiten probar la aplicación y su funcionamiento en tu smartphone o en un navegador en tu ordenador. Verás que el `TEST_MODE` incluye una IP del OBD, pero no es necesaria que exista en ese modo. Debes desabilitar `TEST_MODE` para el poder trabajar de forma normal. Fíjate que el puerto es el 2323, que es, junto al 23, los que ESP-LINK utiliza.
 
 ```c#
@@ -188,7 +190,7 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 <br/>
 <br/>
 
-
+### Configuración del broker MQTT
 La configuración en `Config.h` lleva dos ejemplos de servidores MQTT, estando el de la configuración de Adafruit comentado. Yo utilizo [CloudMQTT](https://www.cloudmqtt.com/) ya que permite altas gratuitas. Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que si la placa está apagada, visualizo los últimos datos enviados. Adafruit no permite esa característica. 
 
 Por supuesto que podeís utilizar el servidor MQTT que mas os guste. Espero vuestros comentarios al respecto.
@@ -220,9 +222,10 @@ const char* nodemqtt= "ioniq/bso";               // Your topiq in CloudMQTT
 <br/>
 <br/>
 
+### Configuración de Telegram
 El siguiente bloque es la configuración del Bot de Télegram, el cual permite recibir los informes de carga cuando esta finaliza:
 
-![telegram](https://user-images.githubusercontent.com/50306926/59963106-d220c100-94ee-11e9-9071-73e040954130.jpg)
+![telegram](https://user-images.githubusercontent.com/50306926/59963526-59bcfe80-94f4-11e9-8425-da87d4fcc1f0.jpg)
 
 La configuración es mu sencilla, pero dirás...¿Como diablos creo y configuro el Bot de Telegram?. Pues primero de todo, Google es tu amigo y ahí encontrarás respuestas. De todas formas te dejo unos links que pueden ser de interés:
 - [How do I create a bot?](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
@@ -233,11 +236,41 @@ En el apartado de `Config.h` únicamente deberás poner el token y el chatId que
 String BOTtoken = "botxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  //token format is botXXXXXXXXXXXXXXXXXXXXXXXXXXX
 String Chat_id = "123456789"; // Chat_id
 IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
+```
+<br/>
+<br/>
+<br/>
 
 
+### Configuración de DDNS
+Si lo deseas, puedes configurar el servicio de DDNS. ¿Qué para que lo necesitas? Pues por ejemplo por si quieres acceder desde el exterior a tu OBD o necesitas saber la IP de tu vehículo. Yo l ohe dejado preparado ya que a mi si me interesa en un futuro próximo para modificaciones que tengo pensadas. Yo utilizo el servisio de [NO-IP](https://www.noip.com/), pero verás que puedes usar otros.
+```c#
+// ***************************************************************************
+// Config DDNS
+// ***************************************************************************
+String ddnsService = "noip"; // Enter your DDNS Service Name - "duckdns" / "noip" / "dyndns" / "dynu" / "enom".
+String ddnsDomain ="YourName.ddns.net"; 
+String ddnsUsername ="UserDDNS";
+String ddnsPassword ="PasswordDDNS";
+int ddnsUpdate = 10000; // Check for New Ip Every 10 Seconds.
+```
+<br/>
+<br/>
+<br/>
+
+
+
+### Otras configuraciones
+En este apartado está el nombre del vehículo, que se envía en la notificación vía Telegram y el tamaño de la batería que quiero usar en un futuro para la versión EV.
+```c#
+String vehicleID = "My IONIQ";    //VehicleID is sended in telegram message
+float kWhBattery = 8.9;           //For Ioniq PHEV
+//float kWhBattery = 38,3;        //For Ioniq EV
 ```
 
-<br/>
+
+
+
 
 ## Screenshots
 **SIN CARGAR**
