@@ -177,11 +177,15 @@ Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona per
 **IMPORTANTE:** Antes de comprobar que funciona revisa el cabelado 2 veces por lo menos, especialmente la alimentación de 5 voltios a y GND para evitar cortocircuitos que puedan dañar a los circuitos del OBD, del ESP8266 o del propio coche. Mi recomendación es que hagas la prueba con una fuente de laboratorio y conectes 12 voltios al OBD mediante conectores. Los pines que tienes que conectar son el 16 con 12V+ y el 4 y 5 con el negativo (GND). Si todo funciona correctamente el OBD y el ESP8266 arrancará y podrás acceder a él:
 
 ![Pineout_OBD](https://user-images.githubusercontent.com/50306926/59956185-049ad180-948f-11e9-984f-49ede28667f0.jpg)
+<br/>
+<br/>
 
 
 Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acceder al menú *"μC CONSOLE"*. Desde ahí teclea el comando *ATZ* y deberás obtener la respuesta de la versión del firmware del OBD, en mi caso *ELM 327 v1.5*. Si es así, todo funciona correctamente y ya está realizado lo mas duro del montaje.
 
 ![atz](https://user-images.githubusercontent.com/50306926/59956657-cbb02c00-9491-11e9-886a-4882cf2a8678.jpg)
+<br/>
+<br/>
 
 
 # Instalación de Ioniq BSO Remote Monitor en ESP8266
@@ -353,8 +357,11 @@ usuario = 'YourUser';
 contrasena = 'YourPassword';
 var client = new Paho.MQTT.Client("m24.cloudmqtt.com", 12345, clientId);  // Edit port number
 ```
+<br/>
+<br/>
 
 Ahora abre `index.html` con un navegador y si tienes la placa con el Ioniq BSO Remote Monitor en funcionamiento y en `TEST_MODE`, deberías ver como los datos van actualizándose. Si es así, copia la carpeta `HTML` a tu smartphone mediante algunos de los programas existentes en la APP Store y deja esa carpeta en algún lugar accesible, como por ejemplo la carpeta *Downloads*. Ahora puedes abrir el `index.html` desde el navegador de tu móvil y ver que todo funciona.
+<br/>
 
 Estamos acabando.... Comenta la linea correspondiente en `Config.h` para desactivar `TEST_MODE`, compila y envía el programa de nuevo a tu placa ESP. Recuerda poner los datos de la WiFi de tu vehículo para que funcione, ya sea compartiendo desde tu smartphone o mediante un router. Conecta el OBD modificado en el Ioniq, alimenta la placa ESP con el programa todo y deberías ver los datos de tu vehículo. 
 
