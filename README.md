@@ -7,31 +7,31 @@
 
 # VERSIÓN EN ESPAÑOL
 
-[¿Para que sirve?](#para-que-sirve)
+- [¿Para que sirve?](#para-que-sirve)
 
-[¿Como funciona?](#como-funciona)
+- [¿Como funciona?](#como-funciona)
 
-[Funcionalidades](#funcionalidades)
+- [Funcionalidades](#funcionalidades)
 
-[¿Qué necesito?](#qué-necesito)
+- [¿Qué necesito?](#qué-necesito)
 
-[Preguntas previas sobre el proyecto](#preguntas-previas-sobre-el-proyecto)
+- [Preguntas previas sobre el proyecto](#preguntas-previas-sobre-el-proyecto)
 
-[¿Como sé que el OBD va a funcionar?](#como-sé-que-el-obd-va-a-funcionar)
+>- [¿Como sé que el OBD va a funcionar?](#como-sé-que-el-obd-va-a-funcionar)
 
-[¿Pero voy a poder usar el OBD en otros programas?](#preguntas-previas-sobre-el-proyecto)
+> - [¿Pero voy a poder usar el OBD en otros programas?](#Pero-voy-a-poder-usar-el-OBD-en-otros-programas)
 
-[¿Puedo montar Torque Pro o Hybrid Assiatnt en mi multimedia?](#preguntas-previas-sobre-el-proyecto)
+> - [¿Puedo montar Torque Pro o Hybrid Assistant en mi multimedia?](#Puedo-montar-Torque-Pro-o-Hybrid-Assistant-en-mi-multimedia)
 
-[¿Pero porqué no utilizar un OBD WiFi directamente?](#preguntas-previas-sobre-el-proyecto)
+> - [¿Pero porqué no utilizar un OBD WiFi directamente?](#Pero-porqué-no-utilizar-un-OBD-WiFi-directamente)
 
-[¿Pero porqué no usar un OBD Bluetooth directamente?](#preguntas-previas-sobre-el-proyecto)
+> - [¿Pero porqué no usar un OBD Bluetooth directamente?](#Pero-porqué-no-usar-un-OBD-Bluetooth-directamente)
 
-[¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?](#porque-lolin-nodemcu-y-no-otra-placa-de-la-familia-esp)
+> - [¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?](#porqué-Lolin-NodeMCU-y-no-otra-placa-de-la-familia-ESP)
 
-[Instalación del software ESP-LINK](#pinstalacion-del-software-esp-link)
+> - [Instalación del software ESP-LINK](#instalación-del-software-esp-link)
 
-[Modificación del OBD](#modificacion-del-obd)
+- [Modificación del OBD](#modificación-del-OBD)
 
 
 
