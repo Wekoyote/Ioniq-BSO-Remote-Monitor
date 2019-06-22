@@ -45,8 +45,11 @@ Antes de nada quiero decir que aunque profesionalmente me he dedicado a la progr
 
 Bien, los vehículos Hyundai Ioniq PHEV o EV vendidos en Europa no incluyen ningún sistema de monitorización de la batería o del proceso de carga, por lo que decidí hacerme un sistema que me permitiera dejar mi Ioniq cargando y que mediante mi smartphone pudiera ver el estado y me avisase al finalizar de la carga. Además quería que el sistema fuera lo mas sencillo posible, aunque haya que tener conocimientos de programación y algo de electrónica básica. No es equiparable al sistema BlueLink que se suministra en USA o Corea, pero realiza las funciones básicas para las que se ha programado.
 
+Un punto importante es que yo ni me hago responsable de la manipulación que hagas a tu OBD o en tu Ioniq. Conectar un OBD al coche no hace perder la garantía, pero si te equivocas, lo haces mal o produces un cortocircuito, es bajo tu única responsabilidad.
+
+
 ## ¿Como funciona?
-Aunque os pueda parecer complicado, el sistema es mas sencillo de lo que parece. Mediante un lector OBD2 modificado para funcionar con WiFi como cliente, una placa de la familia ESP8266 se conecta al OBD2 y recoge los datos necesarios que envía a un broker MQTT. Se ha probado mediante los servidores gratuitos de Adafruit y CloudMQTT, aunque puede utilizarse cualquier otro. Posteriormente desde nuestro smartphone veremos a tiempo real el estado de nuestro vehículo a través de una página web que está copiada en nuestro dispositivo, y que no precisa instalar ninguna aplicación o contratar servicios externos de web o bases de datos. Además, si el usuario dispone de mínimos conocimientos de web y javascript puede crear la pantalla a su medida y gusto. Anímate! Visita [mi lista de Youtube](https://www.youtube.com/playlist?list=PLTzjC-Oy2s-5wAB1-0_I-gAGDHgAlO9_A) para ver algunos videos de ejemplo.
+Aunque os pueda parecer complicado, el sistema es mas sencillo de lo que parece. Mediante un lector OBD2 modificado para funcionar con WiFi como cliente, una placa de la familia ESP8266 se conecta al OBD2 y recoge los datos necesarios que envía a un broker MQTT. Se ha probado mediante los servidores gratuitos de Adafruit y CloudMQTT, aunque puede utilizarse cualquier otro. Posteriormente desde nuestro smartphone veremos a tiempo real el estado de nuestro vehículo a través de una página web que está copiada en nuestro dispositivo, y que no precisa instalar ninguna aplicación o contratar servicios externos de web o bases de datos. Además, si el usuario dispone de mínimos conocimientos de web y javascript puede crear la pantalla a su medida. Anímate a modificar los HTML's a tu gusto y visita [mi lista de Youtube](https://www.youtube.com/playlist?list=PLTzjC-Oy2s-5wAB1-0_I-gAGDHgAlO9_A) para ver algunos videos de ejemplo.
 
 
 ![esquema](https://user-images.githubusercontent.com/50306926/59946559-24200300-946b-11e9-8d00-6204caec7187.jpg)
@@ -72,33 +75,32 @@ La aplicación permite monitorizar los siguientes datos:
 ## ¿Qué necesito?
 * Primero de todo paciencia y leer las instrucciones. Si te cansa leer, no sigas.
 
-* 2 placas de la familia ESP8266. Yo utilizo una Lolin MCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. Realmente puedes utilizar las placas que te vengan en gana, ya que el software debería funcionar sin problemas. Para pruebas también he utilizado Wemos D1 mini. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio. Eso permite que cuando el coche está cargando, la placa dispone de batería para varios días. Puedes poner un power bank o cualquier otro sistema que se te ocurra.
+* 2 placas de la familia ESP8266. Yo utilizo una Lolin MCU V3 para el OBD y una WiFi Kit 8 de [Heltec Automation](https://heltec.org/project/wifi-kit-8/) para la recogida y envío de datos. Realmente puedes utilizar las placas que te vengan en gana, ya que el software debería funcionar sin problemas. Para pruebas también he utilizado Wemos D1 mini. La WiFi Kit 8 dispone de pantalla 0.91″ OLED y cargador automático de baterías de litio. Eso permite que cuando el coche está cargando, la placa dispone de batería para varios días. Puedes poner un power bank o cualquier otro sistema que se te ocurra ya que los USB's del Ioniq no disponen de corriente durante la carga.
 
-* 1 unidad de OBD2 que funcione con el Hyunda Ioniq PHEV y que sea Bluetooth o WiFi. 
+* 1 unidad de OBD2 **que funcione con el Hyunday Ioniq** PHEV y que sea Bluetooth o WiFi.
 
-* El software [ESP-LINK](https://github.com/jeelabs/esp-link) de [JeeLabs](https://github.com/jeelabs) que encontrarás en  https://github.com/jeelabs/esp-link . Este software permite realizar un gateway entre la UART del OBD y nuestra wifi. Ese software deberás instalarlo en la primera de las placas ESP, en mi caso la Lolin NodeMCU. JeeLabs tiene toda la documentación al respecto. Por favor, leela en detalle para poder instalarla.
+* El software [ESP-LINK](https://github.com/jeelabs/esp-link) de [JeeLabs](https://github.com/jeelabs) que encontrarás en  https://github.com/jeelabs/esp-link . Este software permite realizar un gateway entre la UART del OBD y nuestra WiFi y deberás instalarlo en la primera de las placas ESP, en mi caso la Lolin NodeMCU. JeeLabs tiene toda la documentación al respecto. Por favor, leela en detalle para poder instalarla.
 
-* Un router 2, 3 ó 4G en tu vehículo para poder enviar los datos al servidor de MQTT, o tu propio smartphone con la compartición de WiFi activada. Yo dispongo de un router D-Link DWR-730 comprado de segunda mano por poco mas de 20€
+* Un router 2, 3 ó 4G en tu vehículo para poder enviar los datos al servidor de MQTT, o tu propio smartphone con la compartición de WiFi activada. Yo dispongo de un router D-Link DWR-730 comprado de segunda mano por poco mas de 20€, pero el mínimo tráfico de datos hace que cualquiera sirva.
 
 
 ## Preguntas previas sobre el proyecto
 
-### ¿Como sé que el OBD va a funcionar?
-Lo siento, pero todavía no puedo darte un link correcto de compra o de un fabricante, ya que el mio hace muchos años que lo compré y funciona perfectamente, pero tras numerosas pruebas y compras de diferentes OBD's sabemos que los que tienen version 1.5 de firmware disponen de una mayor probabilidad de funcionar, aunque no todos. Suelen funcionar OBD's antiguos, de mas de 3 ó 4 años. Además necesitarás sacar la placa bluetooth o WiFi que lleva para realizar la modificación necesaria, por lo que no podrá ser un OBD monoplaca, o que no permita su manipulación. Si el OBD que tienes dispone de la placa bluetooth o WiFi separable, antes de manipularlo deberás probar con Torque Pro y los ficheros PID de [JejuSoul](https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs) que encontrarás en https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs. No te voy a engañar... es una loteria encontrar uno que funcione, pero los productos de China son así. Sobre todo no te fies del exterior con las imagenes que pondré. No es garantia de que funcione.
+### ¿Como sé que mi OBD va a funcionar?
+Lo siento, pero deberás hacr pruebas previas para saber que sirve. Yo todavía no puedo darte un link correcto de compra o de un fabricante concreto, ya que el mio hace muchos años que lo compré y funciona perfectamente, pero tras numerosas pruebas y compras de diferentes OBD's sabemos que los que tienen version 1.5 de firmware disponen de una mayor probabilidad de funcionar, aunque no todos. Suelen funcionar OBD's antiguos, de mas de 3 ó 4 años. Además necesitarás sacar la placa bluetooth o WiFi que lleva para realizar la modificación necesaria, por lo que no podrá ser un OBD monoplaca, o que no permita su manipulación. Si el OBD que tienes dispone de la placa bluetooth o WiFi separable, antes de manipularlo deberás probar con Torque Pro y los ficheros PID de [JejuSoul](https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs) que encontrarás en https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs. No te voy a engañar... es una loteria encontrar uno que funcione, pero los productos de China son así. Sobre todo no te fies del exterior con las imagenes que pondré ya que no es garantia de que funcione. Si con los PID de [JejuSoul](https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs) te funciona y puedes leer parámetros de la batería, casi seguro que es garantía de éxito.
 
 ### ¿Pero voy a poder usar el OBD en otros programas?
-Si, yo continuo utilizándolo con Torque o Hybrid Assistant desde mi smartphone o, mejor todavía, desde el multimedia de mi Ioniq. Eso si, no puedo utilizar APP's y mi aplicación simultáneamente. Adjunto captura de Torque pro en mi multimedia del Ioniq:
+Si, yo continuo utilizándolo con Torque o Hybrid Assistant desde mi smartphone o, mejor todavía, desde el multimedia de mi Ioniq. Por ese motivo utilizo dos ESP8266 y así poder utilizar otros programas. Eso si, no puedo utilizar multiples APP's y mi aplicación simultáneamente. Adjunto captura de Torque pro en mi multimedia del Ioniq:
 
 ![IMG_20190322_233611_294](https://user-images.githubusercontent.com/50306926/59950477-57b45a80-9476-11e9-8835-0e7f98892dc2.jpg)
 
 
 ### WTF!!! ¿Puedo montar Torque Pro o Hybrid Assitant en el multimedia de mi Ioniq?
-Si, pero no es aquí donde te explicaré eso. Visita [Ioniq Spain](https://ioniqspain.wordpress.com/2019/02/20/acceso-completo-a-la-capa-android/), el blog de nuestro compañero Smoje79, y podrás ver como hacerlo.
-
+Si, pero no es aquí donde te explicaré eso. Visita [Ioniq Spain](https://ioniqspain.wordpress.com/2019/02/20/acceso-completo-a-la-capa-android/), el blog de nuestro compañero Smoje79, y podrás ver como se hace.
 
 
 ### ¿Pero porqué no utilizar un OBD WiFi directamente? 
-Los OBD's WiFi que hay en el mercado funcionan como punto de acceso. La placa encargada de recoger los datos se conectaría sin problemas al OBD, pero no podría salir a Internet para enviar los datos. Por ese motivo modifico el OBD poniendo un ESP8266. Si alguien tiene alguna otra idea, será bienvenida.
+Los OBD's WiFi que hay en el mercado funcionan como punto de acceso (AP) y no como estación (STA). La placa encargada de recoger los datos se conectaría sin problemas al OBD, pero no podría salir a Internet para enviar los datos. Por ese motivo modifico el OBD poniendo un ESP8266. Si alguien tiene alguna otra idea, será bienvenida.
 
 
 ### ¿Pero porqué no usar un OBD Bluetooth directamente?
@@ -113,12 +115,12 @@ Muy simple, es la que tenía a mano. Una muy buena opción es Wemos D1 Mini ya q
 
 
 ## Instalación del software ESP-LINK
-Después de hacer diferentes pruebas con software propio, la mejor opción es utilizar [ESP-LINK](https://github.com/jeelabs/esp-link). Es un software fluido, facil de gestionar y que nos permite multitud de opciones. Tal como ya he dicho anteriormente, seguid las instrucciones de instalación y comprobad que funciona aunque os adjunto la configuración utilizada por mi compañero Ángel desde el programador de firmware del NodeMCU: 
+Después de hacer diferentes pruebas con software propio, [ESP-LINK](https://github.com/jeelabs/esp-link) me ha parecido la mejor opción. Es un software fluido, facil de gestionar y que nos permite multitud de opciones. Tal como ya he dicho anteriormente, seguid las instrucciones de instalación y comprobad que funciona aunque os adjunto la configuración utilizada por mi compañero Ángel desde el programador de firmware del NodeMCU: 
 
 ![firmwareESPLINK](https://user-images.githubusercontent.com/50306926/59951787-40776c00-947a-11e9-9f69-225841a29907.jpg)
 
 
-Una vez instalado el ESP-LINK, conectaros a la Wifi que la placa levantará, y que veréis que está sin seguridad. Deberéis cambiar la velocidad de conexión de la UART desde la opción de menú *"μC CONSOLE"*, dejándolo a 38400 bauds:
+Una vez instalado el ESP-LINK conectaros a la Wifi que la placa levantará y que veréis que está sin seguridad, para posteriormente vía web ir a la IP 192.168.4.1. Deberéis cambiar la velocidad de conexión de la UART desde la opción de menú *"μC CONSOLE"*, dejándolo a 38400 bauds:
 
 ![photo5793915804792762996](https://user-images.githubusercontent.com/50306926/59952544-e2985380-947c-11e9-9bc5-ad3b606f6fc7.jpg)
 
@@ -129,7 +131,7 @@ Os recomiendo desactivar el log desde *"Debug log"* dejándolo en OFF:
 
   
 
-Por último podéis poner una IP fija para que la placa encargada de recoger los datos del OBD pueda encontrar al ESP-LINK:
+Por último podéis poner una IP fija para que la placa encargada de recoger los datos del OBD pueda encontrar al ESP-LINK- Esta IP junto el puerto 2323 es lo que deberéis configurar mas tarde en la segunda placa ESP8266:
 
 ![photo5793915804792762995](https://user-images.githubusercontent.com/50306926/59952543-e2985380-947c-11e9-91af-2c1fb08e84d6.jpg)
 
@@ -137,28 +139,28 @@ Por último podéis poner una IP fija para que la placa encargada de recoger los
 
 # Modificación del OBD
 Antes de nada, gracias a Ángel por su idea. El fué el primero en modificar su OBD y en explicame lo que había hecho :-)
-En principio las modificaciones son sencillas, pero requieren habilidad en soldauras de pequeño tamaño. Mi OBD originalente era así:
+En principio las modificaciones son sencillas, pero requieren habilidad en soldaduras de pequeño tamaño. Mi OBD originalente era así:
 
 ![IMG_20190126_114531](https://user-images.githubusercontent.com/50306926/59947687-33548000-946e-11e9-9c94-68ce4eea7137.jpg)
 
 
-Se tiene que desoldar la placa Bluetooth para poder conectar los pines del ESP8266. En mi modelo el conexionado es el siguiente, pero dependiendo de como sea tu OBD, deberás investigar que pines utilizar.
+Se tiene que desoldar la placa Bluetooth para poder conectar los pines del ESP8266. En mi modelo el conexionado es el siguiente, pero dependiendo de como sea tu OBD, deberás investigar que pines utilizar. Yo no puedo explicártelo si es diferente.
 
 ![pineout](https://user-images.githubusercontent.com/50306926/59955764-85a49980-948c-11e9-807d-163d0b577c75.jpg)
 
 
-Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona perfectamente, o la ESP-01 que cabía perfectamente dentro del OBD. Para no sobrecargar el regulador de tensión de 3.3v que lleva el propio OBD, le instalé un regulador que se alimentaba desde los 5 voltios, tal como hago con la Lolin NodeMCU, pero no acabó de convencerme la temperatura del regulador de tensión. En la siguiente imagen veréis como quedaba el montaje:
+Si, he probado otras placas mas pequeñas como la Wemos D1 Mini que funciona perfectamente, o la ESP-01 que cabía perfectamente dentro del OBD. Para no sobrecargar el regulador de tensión de 3.3v que lleva el propio OBD, le instalé un regulador que se alimentaba desde los 5 voltios, tal como hago con la Lolin NodeMCU, pero no acabó de convencerme la temperatura del regulador de tensión. En la siguiente imagen veréis como quedaba el montaje con ESP-01:
 
 ![ESP01](https://user-images.githubusercontent.com/50306926/59949205-b4ae1180-9472-11e9-8be2-156f9dbae6aa.jpg)
 
 
 
-**IMPORTANTE:** Antes de comprobar que funciona revisa el cabelado, especialmente la alimentación de 5 voltios a y GND para evitar cortocircuitos que puedan dañar a los circuitos del OBD, del ESP8266 o del propio coche. Mi recomendación es que hagas la prueba con una fuente de laboratorio y conectes 12 voltios al OBD mediante conectores. Los pines que tienes que conectar son el 16 con 12V+ y el 4 y 5 con el negativo. Si todo funciona correctamente el OBD y el ESP8266 arrancará y podrás acceder a él:
+**IMPORTANTE:** Antes de comprobar que funciona revisa el cabelado 2 veces por lo menos, especialmente la alimentación de 5 voltios a y GND para evitar cortocircuitos que puedan dañar a los circuitos del OBD, del ESP8266 o del propio coche. Mi recomendación es que hagas la prueba con una fuente de laboratorio y conectes 12 voltios al OBD mediante conectores. Los pines que tienes que conectar son el 16 con 12V+ y el 4 y 5 con el negativo (GND). Si todo funciona correctamente el OBD y el ESP8266 arrancará y podrás acceder a él:
 
 ![Pineout_OBD](https://user-images.githubusercontent.com/50306926/59956185-049ad180-948f-11e9-984f-49ede28667f0.jpg)
 
 
-Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acceder al menú *"μC CONSOLE"*. Desde ahí teclea el comando *ATZ* y deberás obtener la respuesta de la versión del firmware del OBD, en mi caso *ELM 327 v1.5*. Si es así, todo funciona correctamente y ya está realizado lo mas duro.
+Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acceder al menú *"μC CONSOLE"*. Desde ahí teclea el comando *ATZ* y deberás obtener la respuesta de la versión del firmware del OBD, en mi caso *ELM 327 v1.5*. Si es así, todo funciona correctamente y ya está realizado lo mas duro del montaje.
 
 ![atz](https://user-images.githubusercontent.com/50306926/59956657-cbb02c00-9491-11e9-886a-4882cf2a8678.jpg)
 
