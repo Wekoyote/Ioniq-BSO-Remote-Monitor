@@ -24,7 +24,7 @@
 - [Modificación del OBD](#modificación-del-OBD)
 - [Instalación de Ioniq BSO Remote Monitor en ESP8266](#Instalación-de-Ioniq-BSO-Remote-Monitor-en-ESP8266)
   -[Configuración de `Config.h`](#Configuración-de-`Config.h`)
-    - [Configuración de WiFi y OBD] (#Configuración-de-WiFi-y-OBD) 
+    - [Configuración de WiFi y OBD](#Configuración-de-WiFi-y-OBD) 
     - [Configuración del broker MQTT](#Configuración-del-broker-MQTT])
     - [Configuración de Telegram](#Configuración-de-Telegram])
     - [Configuración de DDNS](#Configuración-de-DDNS)
@@ -263,15 +263,37 @@ int ddnsUpdate = 10000; // Check for New Ip Every 10 Seconds.
 <br/>
 
 ### Otras configuraciones
-En este apartado está el nombre del vehículo, que se envía en la notificación vía Telegram y el tamaño de la batería que quiero usar en un futuro para la versión EV.
+En este apartado está el nombre del vehículo que se envía en la notificación vía Telegram, el tamaño de la batería del nuestro ioniq y las configuraciones horarias. tengo pendiente calcular automáticamente si es verano o invierno.
 ```c#
-String vehicleID = "My IONIQ";    //VehicleID is sended in telegram message
-float kWhBattery = 8.9;           //For Ioniq PHEV
-//float kWhBattery = 38,3;        //For Ioniq EV
+String vehicleID = "My IONIQ";   // VehicleID is sended in telegram message
+float kWhBattery = 8.9;          // For Ioniq PHEV
+//float kWhBattery = 38,3;       // For Ioniq EV
+int timeZone = 1;                // Your time zone
+bool daylightSaving = true;      // False for winter time, true for summer time.
 ```
 
 ## Librerías
+En las librerias `NTPClient.h` y `EasyDDNS.h` añado las URL's de descarga.
+```c#
+#include <time.h>              //
+#include <NTPClient.h>         // https://github.com/arduino-libraries/NTPClient
+#include <WiFiUdp.h>           //
+#include <WiFiClientSecure.h>  //
+#include <EasyDDNS.h>          // https://github.com/ayushsharma82/EasyDDNS
+#include <ESP8266WiFi.h>  
+#include <PubSubClient.h>      // IMPORTANT: Modify #define MQTT_MAX_PACKET_SIZE 256 in PubSubClient.h file from library directory
+```
+<br/>
+<br/>
 
+**IMPORTANTE:** 
+Hace falta destacar un punto importante sobre la libería `PubSubClient.h`, que es la encargada de enviar los paquetes MQTT al broker. Como se envía en un único *topic*, el tamaño supera los 127 bits máximos que permite, por lo que debe modicicarse el tamaño de `MQTT_MAX_PACKET_SIZE`a 256. Deberás buscar el fichero `PubSubClient.h`que debería estar en */Arduino/libraries/PubSubClient/src* y editarlo:
+```c#
+// MQTT_MAX_PACKET_SIZE : Maximum packet size
+#ifndef MQTT_MAX_PACKET_SIZE
+#define MQTT_MAX_PACKET_SIZE 256 //<---- modificar aquí 
+#endif
+```
 
 
 
