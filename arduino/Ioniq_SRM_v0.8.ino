@@ -1,6 +1,9 @@
 /*
-  Ioniq SRM (SOC Remote Monitor)
+  Ioniq SRM (BOS Remote Monitor)
   Copyright (c) 2019 for WE Koyote Ioniq.wekoyote at gmail.com. All rights reserved.
+  
+  https://github.com/Wekoyote/Ioniq-BSO-Remote-Monitor
+  
 */
 
 #include <time.h>
