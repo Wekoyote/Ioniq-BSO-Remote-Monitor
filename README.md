@@ -93,6 +93,8 @@ Lo siento, pero deberás hacr pruebas previas para saber que sirve. Yo todavía 
 
 ### ¿Pero voy a poder usar el OBD en otros programas?
 Si, yo continuo utilizándolo con Torque o Hybrid Assistant desde mi smartphone o, mejor todavía, desde el multimedia de mi Ioniq. Por ese motivo utilizo dos ESP8266 y así poder utilizar otros programas. Eso si, no puedo utilizar multiples APP's y mi aplicación simultáneamente. Adjunto captura de Torque pro en mi multimedia del Ioniq:
+<br/>
+<br/>
 
 ![IMG_20190322_233611_294](https://user-images.githubusercontent.com/50306926/59950477-57b45a80-9476-11e9-8835-0e7f98892dc2.jpg)
 <br/>
@@ -104,15 +106,18 @@ Si, pero no es aquí donde te explicaré eso. Visita [Ioniq Spain](https://ioniq
 
 ### ¿Pero porqué no utilizar un OBD WiFi directamente? 
 Los OBD's WiFi que hay en el mercado funcionan como punto de acceso (AP) y no como estación (STA). La placa encargada de recoger los datos se conectaría sin problemas al OBD, pero no podría salir a Internet para enviar los datos. Por ese motivo modifico el OBD poniendo un ESP8266. Si alguien tiene alguna otra idea, será bienvenida.
-
+<br/>
+<br/>
 
 ### ¿Pero porqué no usar un OBD Bluetooth directamente?
 Esa fue mi primera idea, mediante un ESP32 conectar al OBD y de ahí enviar los datos al broker MQTT. Lo siento, no fuí capaz de utilizar el Bluetooth clasico con éxito mediante el IDE de Arduino. Mediante el ESP-IDF de Espressif parece que sería posible, pero mis conocimientos en el ESP32 no son suficientes por el momento.
-
+<br/>
+<br/>
 
 ### ¿Porqué Lolin NodeMCU y no otra placa de la familia ESP?
 Muy simple, es la que tenía a mano. Una muy buena opción es Wemos D1 Mini ya que es pequeña, igual de barata y funciona perfectamente. Posiblemente sustituya Lolin por esta placa. Agadeceré que me digáis cual usáis vosotros. 
-
+<br/>
+<br/>
 
 ---------------------------------------------------------------
 
