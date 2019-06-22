@@ -23,6 +23,7 @@
 - [Instalación del software ESP-LINK](#Instalación-del-software-ESP-LINK)
 - [Modificación del OBD](#modificación-del-OBD)
 - [Instalación de Ioniq BSO Remote Monitor en ESP8266](#Instalación-de-Ioniq-BSO-Remote-Monitor-en-ESP8266)
+  -[Configuración de `Config.h`](#Configuración-de-`Config.h`)
 
 
 
@@ -149,6 +150,7 @@ Si todo es correcto, puedes probar a conectarte al OBD desde un navegador y acce
 
 # Instalación de Ioniq BSO Remote Monitor en ESP8266
 
+## Configuración de `Config.h`
 Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nuestra segunda placa ESP8266. Como ya he dicho anteriormente, puedes utilizar la que te venga en gana, pero deberás configurar el `Config.h` antes de compilar el código. En estas 4 primeras líneas puedes escoger si utilizar o no el bot de Telegram, cliente de DDNS (DNS dinámico), habilitar el modo test para pruebas sin el OBD y si utilizas un ESP WIFI Kit 8 de Heltec o cualquier otro ESP. Si no tienes esa placa, déjala comentada ya que podrás usar cualquiera.
 
 ```c#
@@ -187,7 +189,7 @@ Ahora ya podemos pasar a instalar el software del Ioniq BSO Remote Monitor en nu
 <br/>
 
 
-La configuración en `Config.h` lleva dos ejemplos de servidores MQTT. Yo utilizo [CloudMQTT](https://www.cloudmqtt.com/) ya que permite altas gratuitas. Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que si la placa está apagada, visualizo los últimos datos enviados. Adafruit no permite esa característica. 
+La configuración en `Config.h` lleva dos ejemplos de servidores MQTT, estando el de la configuración de Adafruit comentado. Yo utilizo [CloudMQTT](https://www.cloudmqtt.com/) ya que permite altas gratuitas. Todos los datos se envían en un array a un único tópic, por lo con el plan *Cute Cat* puedo trabajar sin problema. Además [CloudMQTT](https://www.cloudmqtt.com/) dispone la *persistencia*, lo que permite que si la placa está apagada, visualizo los últimos datos enviados. Adafruit no permite esa característica. 
 
 Por supuesto que podeís utilizar el servidor MQTT que mas os guste. Espero vuestros comentarios al respecto.
 
@@ -200,22 +202,41 @@ Por supuesto que podeís utilizar el servidor MQTT que mas os guste. Espero vues
 const char* mqtt_server = "io.adafruit.com";
 const int mqttPort = 1883;
 const char* mqttUser = "YourUsername";                           // Your Username
-const char* mqttPassword = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  // Your Active Key Key
-const char* nodemqtt= "Username/f/ioniq";  //                   // Your feed
+const char* mqttPassword = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";   // Your Active Key Key
+const char* nodemqtt= "Username/f/ioniq";  //                    // Your feed
 */
 
 
 // ***************************************************************************
 // Config server mqttt cloudmqtt.com. Support persistence data.
 // ***************************************************************************
-const char* mqtt_server = "m24.cloudmqtt.com";  // Your server in CloudMQTT
-const int mqttPort = 14357;                     // Your port NOT SSL
-const char* mqttUser = "UserCloudMQTT";                 // Your user in CloudMQTT
-const char* mqttPassword = "PasswordCloudMQTT";           // Your password in CloudMQTT
-const char* nodemqtt= "ioniq/bso";              // Your topiq in CloudMQTT
+const char* mqtt_server = "m24.cloudmqtt.com";   // Your server in CloudMQTT
+const int mqttPort = 14357;                      // Your port NOT SSL
+const char* mqttUser = "UserCloudMQTT";          // Your user in CloudMQTT
+const char* mqttPassword = "PasswordCloudMQTT";  // Your password in CloudMQTT
+const char* nodemqtt= "ioniq/bso";               // Your topiq in CloudMQTT
 ```
 <br/>
 <br/>
+<br/>
+
+El siguiente bloque es la configuración del Bot de Télegram, el cual permite recibir los informes de carga cuando esta finaliza:
+
+![telegram](https://user-images.githubusercontent.com/50306926/59963106-d220c100-94ee-11e9-9071-73e040954130.jpg)
+
+La configuración es mu sencilla, pero dirás...¿Como diablos creo y configuro el Bot de Telegram?. Pues primero de todo, Google es tu amigo y ahí encontrarás respuestas. De todas formas te dejo unos links que pueden ser de interés:
+- [How do I create a bot?](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
+- [How to create an Telegram Bot Token & Get Chat ID?](https://www.youtube.com/watch?v=2jdsvSKVXNs)
+
+En el apartado de `Config.h` únicamente deberás poner el token y el chatId que corresponda.
+```c#
+String BOTtoken = "botxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  //token format is botXXXXXXXXXXXXXXXXXXXXXXXXXXX
+String Chat_id = "123456789"; // Chat_id
+IPAddress telegramServer(149, 154, 167, 200); // IP de api.telegram.org
+
+
+```
+
 <br/>
 
 ## Screenshots
